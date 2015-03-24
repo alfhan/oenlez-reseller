@@ -1,9 +1,10 @@
-*/config/development
-*/logs/log-*.php
-*/logs/!index.html
-*/cache/*
-*/cache/!index.html
-*/cache/!.htaccess
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
 
 uploads/*
 !uploads/readme.txt
@@ -20,3 +21,4 @@ Thumbs.db
 .*
 !.gitignore
 !.gitattributes
+!.htaccess
