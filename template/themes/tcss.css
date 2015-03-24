@@ -1,0 +1,111 @@
+.frm-lable{
+	font-size:14px;
+	font-weight:bold;
+}
+.form-control{
+	display: block;
+	  width: 100%;
+	  height: 20px;
+	  padding: 2px 2px;
+	  font-size: 13px;
+	  line-height: 1.42857143;
+	  color: #555;
+	  background-color: #fff;
+	  background-image: none;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control:focus {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+}
+@media (min-width: 768px) {
+.sm-12 {
+    width: 100%;
+  }
+  .sm-11 {
+    width: 91.66666667%;
+  }
+  .sm-10 {
+    width: 83.33333333%;
+  }
+  .sm-9 {
+    width: 75%;
+  }
+  .sm-8 {
+    width: 66.66666667%;
+  }
+  .sm-7 {
+    width: 58.33333333%;
+  }
+  .sm-6 {
+    width: 50%;
+  }
+  .sm-5 {
+    width: 41.66666667%;
+  }
+  .sm-4 {
+    width: 33.33333333%;
+  }
+  .sm-3 {
+    width: 25%;
+  }
+  .sm-2 {
+    width: 16.66666667%;
+  }
+  .sm-1 {
+    width: 8.33333333%;
+  }
+ }
+ .top-atas{
+	
+	height:63px;overflow:hidden;
+	color:#333;
+	background-color:#E6EEF8;
+	background:-moz-linear-gradient(top,#E6EEF8,#fff);
+	background:-webkit-gradient(linear,0% 0%,0% 100%,from(#E6EEF8),to(#fff));
+	/* border:none;border-bottom:1px solid #FBD560; */
+}
+#left-menu li .tree-node{height:35px;border-bottom:1px solid #E6EEF8;font-family:helvetica,tahoma,verdana,sans-serif;} #left-menu li .tree-node span{top:8px;position:relative;}
+.panel-title{font-size:14px;}
+/* #south{
+	-webkit-box-shadow:inset 0 -1px 0px #c1c1c1,inset 0 1px 0px #e6e6e6,inset -1px 0 0px #d3d3d3,inset 1px 0 0px #d3d3d3;
+	-moz-box-shadow:inset 0 -1px 0px #c1c1c1,inset 0 1px 0px #e6e6e6,inset -1px 0 0px #d3d3d3,inset 1px 0 0px #d3d3d3;
+	background:linear-gradient(#A69E8D 0px, #817865 100%) repeat-x;
+} */
+#t-left-menu{
+	-webkit-box-shadow:inset 0 -1px 0px #c1c1c1,inset 0 1px 0px #e6e6e6,inset -1px 0 0px #d3d3d3,inset 1px 0 0px #d3d3d3;
+	-moz-box-shadow:inset 0 -1px 0px #c1c1c1,inset 0 1px 0px #e6e6e6,inset -1px 0 0px #d3d3d3,inset 1px 0 0px #d3d3d3;
+} */
+a{
+	text-decoration:none;
+}
+#fm{
+	margin:0;
+	padding:10px 30px;
+}
+.ftitle{
+	font-family:Arial;
+	font-size:18px;
+	font-weight:bold;
+	color:#666;
+	padding:5px 0;
+	margin-bottom:10px;
+	border-bottom:1px solid #ccc;
+}
+.fitem{
+	margin-bottom:5px;
+}
+.fitem label{
+	display:inline-block;
+	width:80px;
+}
+.form_table, .form_table td{
+	font-size:14px;
+	font-weight:bold;
+	vertical-align:top;
+}
