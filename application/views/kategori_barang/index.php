@@ -19,7 +19,7 @@
                 	<input type="hidden" id="id" name="id" />
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="username">Nama Jenis Barang</label>
+                            <label for="username">Nama Kategori</label>
                             <input type="text" class="form-control input-sm" required="true" id="nama" name="nama">
                         </div>
                     </div>

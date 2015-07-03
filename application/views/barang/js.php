@@ -54,10 +54,10 @@
         });
     }
 	function editClick(id) {
-    var dataJson = eval(<?=$dataJson;?>);
+    window.open("<?=base_url('barang/form')?>/"+id,"_self");
+    /*var dataJson = eval(<?=$dataJson;?>);
     $.each(dataJson, function (key, data) {
       if(data.id == id){
-        /*console.log(data);*/
         $("#id").val(id);
         $("#kode_barang").val(data.kode_barang);
         $("#kode_barang").focus();
@@ -72,13 +72,10 @@
         $("#harga_beli").val(data.harga_beli);
         $("#keterangan").text(data.keterangan);
       }
-    });
+    });*/
 	}
 	function addClick(){
-		$("#id,#nama,#old_file,#qty,#harga_jual,#harga_beli,#kode_barang,#kode_barcode,#keterangan").val('');
-		$("#qty,#harga_jual,#harga_beli").removeAttr("disabled");
-		$("#jenis_barang_id").val(1);
-    $('#modal').modal('show');
+		window.open("<?=base_url('barang/form')?>","_self");
 	}
 	function deleteClick(id,foto){
 		bootbox.confirm("Apakah anda yakin ingin menghapus?", function(result) {

@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'alfhanco_adm';
-$db['default']['password'] = 'adm1234';
-$db['default']['database'] = 'alfhanco_katalog';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'for_snack';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

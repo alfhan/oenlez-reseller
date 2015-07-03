@@ -1,8 +1,11 @@
 <!--Header-->
 <header class="header">
-    <a href="<?php echo base_url();?>" class="logo">
+    <a href="<?php echo base_url('admin');?>" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
-        <?=TITLE_APP?>
+        <?php 
+            $profil = $this->auth->profil();
+            echo $profil->nama;
+        ?>
     </a>
     <?php $pengguna = $this->auth->pengguna();?>
     <!-- Header Navbar: style can be found in header.less -->

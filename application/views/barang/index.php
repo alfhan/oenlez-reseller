@@ -39,16 +39,16 @@
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="110">
-                                <img src="<?php echo base_url(FILE_BARANG.$r['foto']);?>" height="120" width="100"/>
+                                <img src="<?php echo base_url('images/kategori_feature/'.$r['foto']);?>" height="120" width="100"/>
                             </td>
                             <td style="font-size:11px;" valign="top">
                             <button class="btn btn-xs pull-right bg-red" onclick="deleteClick('<?=$r['id']?>','<?=$r['foto']?>')" title="delete" style="margin:2px;">
                         <i class="fa fa-minus-circle"></i>
                     </button>
-                    <button class="btn btn-xs pull-right bg-blue" onclick="editClick('<?=$r['id']?>')" 
+                    <a class="btn btn-xs pull-right bg-blue" href="<?=base_url('barang/form/'.$r['id']);?>" 
                         title="edit" style="margin:2px;">
                         <i class="fa fa-edit"></i>
-                    </button>
+                    </a>
                     <br />
                     <br />
                             <b>Harga Jual : </b>

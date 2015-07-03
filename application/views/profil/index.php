@@ -3,7 +3,7 @@
         <?=$title?>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-th"></i> Transaksi</a></li>
+        <li><a href="#"><i class="fa fa-th"></i> Master</a></li>
         <li><a href="<?php echo base_url($link);?>"><i class="fa fa-angle-double-right"></i> <?=$title?></a></li>
     </ol>
 </section>
@@ -37,16 +37,28 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="website" class="col-sm-3 control-label">Website</label>
+                        <label for="email" class="col-sm-3 control-label">Email</label>
                         <div class="col-sm-5">
-                            <input name="website" id="website" class="form-control input-sm" required value="<?=$data->website?>" />
+                            <input name="email" id="email" class="form-control input-sm" required value="<?=$data->email?>" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fb" class="col-sm-3 control-label">Facebook</label>
+                        <div class="col-sm-5">
+                            <input name="fb" id="fb" class="form-control input-sm" required value="<?=$data->fb?>" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter" class="col-sm-3 control-label">Twitter</label>
+                        <div class="col-sm-5">
+                            <input name="twitter" id="twitter" class="form-control input-sm" required value="<?=$data->twitter?>" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="foto" class="col-sm-3 control-label">Logo</label>
                         <div class="col-sm-5">
                             <input type="file" id="foto" name="foto">
-                            <p class="help-block">Image Only</p>
+                            <p class="help-block">Image Only (139x39)</p>
                         </div>
                     </div>
                 </div>

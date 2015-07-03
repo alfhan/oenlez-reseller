@@ -187,5 +187,9 @@ class MY_Model extends CI_Model {
 		$linkHalaman = $this->navHalaman($hal, $jmlhalaman,$url);
 		return array('query'=>$query,'linkHalaman'=>$linkHalaman);
 	}
+	public function isiData($table)
+	{
+		return $this->db->get($table);
+	}
 }
 ?>

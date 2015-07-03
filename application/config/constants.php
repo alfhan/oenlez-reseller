@@ -41,6 +41,8 @@ define('UPLOADS',								'uploads/');
 define('FILE_BARANG',							'uploads/barang/');
 define('ERROR_MSG',								'Gagal, Hubungi Administraor Aplikasi');
 define('FILE_PERUSAHAAN',						'images/company/');
+define('MEMBER',						'xp');
+define('OWNER',							'7');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -1,0 +1,1 @@
+<link href="<?php echo base_url('adminlte/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css');?>" rel="stylesheet" type="text/css" />

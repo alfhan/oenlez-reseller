@@ -11,7 +11,7 @@ class profil_model extends MY_Model {
 		return $result->row();
 	}
 	public function profil_save(){
-		$config['upload_path'] = './'.FILE_PERUSAHAAN;
+		/*$config['upload_path'] = './'.FILE_PERUSAHAAN;
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1024';
 		$config['max_width']  = '1380';
@@ -22,15 +22,19 @@ class profil_model extends MY_Model {
 		$this->load->library('upload', $config);
 		$this->upload->do_upload('foto');
 		$data_foto = $this->upload->data();
-		$return = $this->upload->display_errors();
+		$return = $this->upload->display_errors();*/
+		@$tmp_name = $_FILES['foto']['tmp_name'];
+		$foto = $tmp_name ? $this->image_resize_logo($tmp_name) : false;
 		$data = array(
 			'nama' => $this->input->post('nama'),
 			'alamat' => $this->input->post('alamat'),
 			'telp' => $this->input->post('telepon'),
-			'website' => $this->input->post('website'),
-			'foto' => $data_foto['file_name'],
+			'email' => $this->input->post('email'),
+			'fb' => $this->input->post('fb'),
+			'twitter' => $this->input->post('twitter'),
+			'foto' => $foto,
 			);
-		if($return or empty($data_foto['file_name'])){
+		if(!$foto){
 			unset($data['foto']);
 		}else{
 			$this->load->helper('file');
@@ -44,4 +48,24 @@ class profil_model extends MY_Model {
 			$this->db->update($this->table,$data,array('id'=>$id));
 		}
 	}
+	public function image_resize_logo($images)
+    {
+    	$this->load->library('image_lib');
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $images;
+		/*$config['create_thumb'] = TRUE;*/
+		$config['maintain_ratio'] = false;
+		$config['width']         = 139;
+		$config['height']       = 39;
+		$config['new_image'] = "images/company/logo.jpg";
+		$this->image_lib->initialize($config);
+		$this->image_lib->clear();
+	    $this->image_lib->initialize($config);
+	    $this->image_lib->resize();
+		if ( ! $this->image_lib->resize()){
+        	return $this->image_lib->display_errors();
+		}else{
+			return 'logo.jpg';
+		}
+    }
 }

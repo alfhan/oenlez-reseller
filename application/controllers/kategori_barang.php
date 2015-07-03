@@ -13,7 +13,7 @@ class kategori_barang extends CI_Controller {
     }
 	public function index(){
 		$index = array(
-			'title' => 'Kategori Barang',
+			'title' => 'Kategori Produk',
 			'link' => $this->kelas, 
 			'data' => $this->kategori_barang_model->get(),
 			);

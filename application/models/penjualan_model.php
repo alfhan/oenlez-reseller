@@ -12,7 +12,10 @@ class penjualan_model extends MY_Model {
         $this->session_id = $this->session->userdata('session_id');
         $this->id = $this->session->userdata('id');
     }
-
+    public function get()
+    {
+        $this->session->userdata('session_id');
+    }
     function temp_jual($session_id){
     	$id = $this->input->post('id');
     	if(isset($_POST['qty'])){
