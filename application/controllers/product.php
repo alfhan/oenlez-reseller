@@ -67,14 +67,35 @@ class product extends CI_Controller {
 			redirect(site_url('blog/login'));
 		}
 	}
-	public function history($value='')
+	public function checkout($value='')
 	{
-		# code...
+		if($this->session->userdata('tipe') == sha1(md5(MEMBER))){
+			$this->load->model('shop_model');
+			$this->shop_model->checkout();
+		}else{
+			redirect(site_url('blog/login'));
+		}
+	}
+	public function invoice($value='')
+	{
+		$this->load->model('shop_model');
+		$data = array(
+			'list' => $this->shop_model->invoice($value),
+			);
+		$this->load->view('front/invoice',$data);
+	}
+	public function history_trx($value='')
+	{
+		$this->load->model('shop_model');
+		$data = array(
+			'list' => $this->shop_model->history_trx(),
+			);
+		$this->load->view('front/history',$data);
 	}
 	public function kabkota($value='')
 	{
 		$rs = $this->db->get_where('kabkota',array('provinsi_id'=>$_POST['id']));
-		$opt = "";
+		$opt = "<option value=\"0\">--Pilih Kabupaten / Kota--</option>";
 		foreach ($rs->result_array() as $r) {
 			$opt .= "<option value='$r[id]'>$r[nama]</option>";
 		}
@@ -83,7 +104,7 @@ class product extends CI_Controller {
 	public function kecamatan($value='')
 	{
 		$rs = $this->db->get_where('kecamatan',array('kabkota_id'=>$_POST['id']));
-		$opt = "";
+		$opt = "<option value=\"0\">--Pilih Kecamatan--</option>";
 		foreach ($rs->result_array() as $r) {
 			$opt .= "<option value='$r[id]'>$r[nama]</option>";
 		}
@@ -95,7 +116,13 @@ class product extends CI_Controller {
 		$rs = $this->shipping_model->cekHarga();
 		if($rs->num_rows() > 0){
 			$r = $rs->row_array();
+			$berat = ($_POST['berat']/1000);
 			$n = $r['harga'];
+			if($berat > $r['berat']){
+				$b = ($berat/$r['berat']);
+				$c = ceil($b);
+				$n = $r['harga']*$c;
+			}
 			$id = $r['id'];
 			echo json_encode(array('success'=>true,'harga'=>$n,'id'=>$id));
 		}else{

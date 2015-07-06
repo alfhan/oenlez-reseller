@@ -12,17 +12,17 @@
               <h3 class="panel-title">Checkout</h3>
             </div>
             <div class="panel-body">
-              <form id="frm">
+              <form id="myForm">
                 <table class="table">
                   <tr>
                     <td>Alamat</td>
-                    <td colspan="3"><input name="alamat" class="form-control input-sm"></td>
+                    <td colspan="3"><input name="alamat" id="alamat" class="form-control input-sm"></td>
                     <td>Kode Pos</td>
                     <td><input name="kode_pos" class="form-control input-sm"></td>
                   </tr>
                   <tr>
                     <td>Nama Penerima</td>
-                    <td colspan="2"><input name="alamat" class="form-control input-sm"></td>
+                    <td colspan="2"><input name="nama" id="nama" class="form-control input-sm"></td>
                     <td>Jasa Kurir</td>
                     <td>
                     <select class="form-control input-sm" name="kurir_id" id="kurir_id">
@@ -35,13 +35,14 @@
                     </td>
                     <td>
                       <input name="harga_kirim" id="harga_kirim" readonly class="form-control input-sm">
-                      <input name="harga_kirim_id" type="hidden" class="form-control input-sm">
+                      <input name="harga_kirim_id" id="harga_kirim_id" type="hidden" class="form-control input-sm">
                     </td>
                   </tr>
                   <tr>
                     <td>Provinsi</td>
                     <td>
                       <select class="form-control input-sm" name="provinsi_id" id="provinsi_id" onchange="provCh()">
+                        <option value="0">--Pilih Provinsi--</option>
                         <?php
                         foreach ($provinsi as $r) {
                           echo "<option value='$r[id]'>$r[nama]</option>";
@@ -64,36 +65,44 @@
                   </tr>
                   <tr>
                     <td>No Hp</td>
-                    <td><input name="hp" class="form-control input-sm"></td>
+                    <td><input name="hp" class="form-control input-sm" id="hp"></td>
                     <td>Catatan</td>
                     <td colspan="3"><input name="catatan" class="form-control input-sm"></td>
                   </tr>
                 </table>
               </form>
-              <table>
+              <hr/>
+              <table class="table">
                 <tr>
+                  <th>No</th>
                   <th>Item</th>
                   <th>Harga</th>
                   <th>Jumlah</th>
                 </tr>
-                <?php $no=1; $ttl = 0; foreach ($list as $r) { ?>
+                <?php $b=0; $no=1; $ttl = 0; foreach ($list->result_array() as $r) { ?>
                 <tr>
                   <td><?=$no++?></td>
-                  <td><?=$r['kode_barang']?> - <?=$r['barang_nama']?> - <?=$r['qty']?></td>
+                  <td><?=$r['kode_barang']?> - <?=$r['barang_nama']?> - Qty : <?=$r['qty']?> - @Weight : <?=$r['berat']?></td>
                   <td><?=$r['harga']?></td>
                   <td>
                     <?php
                       $jml = $r['qty']*$r['harga'];
                       echo $jml;
                       $ttl += $jml;
+                      $b += $r['berat']*$r['qty'];
                     ?>
                   </td>
                 </tr>
                 <?php } ?>
+                <tr>
+                  <td><b>Total</b></td>
+                  <td colspan="2">Weight <input type="hidden" id="berat_total" value="<?=$b?>" /><?=$b?>gr</td>
+                  <td><?=$ttl?></td>
+                </tr>
               </table>
             </div>
             <div class="panel-footer">
-              <a href="" onclick="saveClick()" class="btn btn-md btn-success"><i class="fa fa-save"></i> Checkout</a>
+              <a href="#" onclick="saveClick()" class="btn btn-md btn-success"><i class="fa fa-save"></i> Checkout</a>
             </div>
           </div>
         </div>
@@ -139,8 +148,10 @@
           show: false,
         });
     function saveClick(){
+      var validasi = isVlaid();
+      if(validasi == true){
         $('#myForm').ajaxSubmit({
-            url:"<?=site_url('product/checkout_cart');?>",
+            url:"<?=site_url('product/checkout');?>",
             type:'POST',
             beforeSend:function(r){
               berforeSendLoading.modal('show');
@@ -148,7 +159,8 @@
             success:function(r){
               berforeSendLoading.modal('hide');
               alert('Transaksi Berhasil. . .');
-              window.open("<?=site_url('home/history')?>","_self");
+              var r = eval("("+r+")");
+              window.open("<?=site_url('product/invoice')?>/"+id,"_self");
             },
             error:function(r){
               berforeSendLoading.modal('hide');
@@ -157,8 +169,23 @@
         }).data('jqxhr').done(function(r){
             
         });
+      }else{
+        alert('Harap Lengkapi Data');
+      }
+    }
+    function isVlaid() {
+      if($("#nama").val()){
+        return true;
+      }else if($("#alamat").val()){
+        return true;
+      }else if ($("#hp").val()) {
+        return true;
+      }else{
+        return false;
+      }
     }
     function provCh(){
+      $("#harga_kirim,#harga_kirim_id").val('');
       $.ajax({
         type:'POST',
         data:{id:$("#provinsi_id").val()},
@@ -169,6 +196,7 @@
       })
     }
     function kabkotaCh(){
+      $("#harga_kirim,#harga_kirim_id").val('');
       $.ajax({
         type:'POST',
         data:{id:$("#kabkota_id").val()},
@@ -183,9 +211,10 @@
       var provinsiId = $("#provinsi_id").val();
       var kabkotaId = $("#kabkota_id").val();
       var kecamatanId = $("#kecamatan_id").val();
+      var berat = $("#berat_total").val();
       $.ajax({
         type:'POST',
-        data:{kurir_id:kurirId,provinsi_id:provinsiId,kabkotaId:kabkota_id,kecamatan_id:kecamatanId},
+        data:{kurir_id:kurirId,provinsi_id:provinsiId,kabkota_id:kabkotaId,kecamatan_id:kecamatanId,berat:berat},
         url:"<?=site_url('product/harga_kurir')?>",
         success:function(r){
           var r = eval("("+r+")");
@@ -197,7 +226,7 @@
             alert('harga tidak ditemukan');
           }
         }
-      })
+      });
     }
     </script>
 </body>

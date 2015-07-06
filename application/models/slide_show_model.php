@@ -61,8 +61,8 @@ class slide_show_model extends MY_Model {
     {
     	#slide
     	$slide_path = 'images/slide_show';
-    	$slide_width = 484;
-    	$slide_height = 441;
+    	$slide_width = 768;
+    	$slide_height = 450;
     	$this->load->library('image_lib');
     	$uniqid = uniqid();
 		$config['image_library'] = 'gd2';

@@ -32,8 +32,6 @@
 					<div class="logo pull-left">
 						<a href="#"><img src="<?=base_url('images/company/'.$profile->foto);?>"></a>
 					</div>
-					<div class="btn-group pull-right">
-					</div>
 				</div>
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">

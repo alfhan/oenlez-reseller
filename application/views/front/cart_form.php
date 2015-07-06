@@ -28,16 +28,23 @@
                     <?php 
                         }else{ 
                             $t = 0;
+                            $b = 0;
                             foreach ($data->result_array() as $r) {
                                 $jumlah = $r['qty']*$r['harga'];
+                                $berat = $r['qty']*$r['berat'];
                                 $t += $jumlah;
+                                $b += $berat;
                                 echo "<tr>
-                                <td><b>$r[kode_barang]</b> - $r[nama_barang]</td>
+                                <td>
+                                    <b>$r[kode_barang]</b> - $r[barang_nama] - $r[berat]gr 
+                                    <a href='javascript:void(0)' class='btn btn-xs btn-danger' onclick=\"hapusClick('$r[id]')\"><i class='fa fa-minus'></i></a>
+                                </td>
                                 <td>$r[harga]</td>
                                 <td>
                                     <input style='text-align:center' name='qty[]' value='$r[qty]' size='5' />
                                     <input type='hidden' value='$r[barang_id]' name='barang_id[]'  />
                                     <input type='hidden' value='$r[id]' name='id[]'  />
+                                    $berat gr
                                 </td>
                                 <td align='right'>
                                     $jumlah
@@ -45,7 +52,8 @@
                                 </tr>";
                             }
                             echo "<tr>
-                            <td colspan='3' align='center'><b>Total</b></td>
+                            <td colspan='2' align='center'><b>Total</b></td>
+                            <td><b>$b</b>gr</td>
                             <td align='right'><b>$t</b></td>
                             </tr>";
                             echo "<tr>
@@ -121,6 +129,25 @@
         }).data('jqxhr').done(function(r){
             
         });
+    }
+    function hapusClick (id) {
+        $.ajax({
+          url:"<?=site_url('home/hapus/temp_jual');?>",
+          type:'POST',
+          data:{id:id},
+          beforeSend:function(r){
+            berforeSendLoading.modal('show');
+          },
+          success:function(r){
+            berforeSendLoading.modal('hide');
+            successDialog.modal('show');
+            window.open("<?=site_url('home/my_cart')?>","_self");
+          },
+          error:function(r){
+            berforeSendLoading.modal('hide');
+            errorDialog.modal('show');
+          },
+        })
     }
     </script>
 </body>

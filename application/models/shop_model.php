@@ -10,14 +10,13 @@ class shop_model extends MY_Model {
     }
     public function get_temp_shop()
     {
-    	/*return $this->db->get_where('temp_jual',array('sesi_id'=>$this->session_id));*/
     	if($this->session->userdata('tipe') == sha1(md5(MEMBER)) ){
     		$pelangganId = $this->session->userdata('id');
     		$where = "pelanggan_id = '$pelangganId'";
     	}else{
     		$where = "sesi_id = '{$this->session_id}'";
     	}
-    	$sql = "select tj.*, b.nama barang_nama, b.kode_barang
+    	$sql = "select tj.*, b.nama barang_nama, b.kode_barang, b.berat
     	from temp_jual tj 
     	left join barang b on tj.barang_id = b.id
     	where $where";
@@ -32,6 +31,7 @@ class shop_model extends MY_Model {
 			'barang_id' => $barang_id,
 			'qty' => 1,
 			'harga' => $barang['harga_jual'],
+			'berat' => $barang['berat'],
 			'tanggal' => date("Y-m-d"),
 			);
 		if($this->session->userdata('tipe') == sha1(md5(MEMBER)) ){
@@ -70,6 +70,12 @@ class shop_model extends MY_Model {
 			echo json_encode(array('success'=>'Tersimpan'));
 		}
 	}
+	public function delete_temp_shop($value='')
+	{
+		$id = $_POST['id'];
+		$this->db->delete('temp_jual',array('id'=>$id));
+		echo json_encode(array('success'=>'Tersimpan'));
+	}
 	public function loginCekTempAndUpdate()
 	{
 		$rs = $this->db->get_where('temp_jual',array('sesi_id'=>$this->session_id));
@@ -84,12 +90,12 @@ class shop_model extends MY_Model {
 	public function checkout(){
 		#prepare & inisialization
 		$this->load->library('uuidclass');
-		$session_id = $this->session->userdata('session_id');
+		$pelanggan_id = $this->session->userdata('id');
 		$shop_id = $this->uuidclass->v4();
 		$this->db->trans_begin();
-		$no_invoice = generateRandomString();
+		$no_invoice = generateRandomString(6);
 		#select temp
-		$this->db->where(array('session_id'=>$session_id));
+		$this->db->where(array('pelanggan_id'=>$pelanggan_id));
 		$temp = $this->db->get('temp_jual')->result_array();
 		#create detail shop
 		$total = 0;
@@ -109,8 +115,8 @@ class shop_model extends MY_Model {
 		}
 		#create shop
 		$data = array(
-			'shop' => $shop_id,
-			'pelanggan_id' => $_POST['pelanggan_id'],
+			'id' => $shop_id,
+			'pelanggan_id' => $pelanggan_id,
 			'nama' => $_POST['nama'],
 			'alamat' => $_POST['alamat'],
 			'hp' => $_POST['hp'],
@@ -127,8 +133,37 @@ class shop_model extends MY_Model {
 			);
 		$this->db->insert('shop',$data);
 		#delete temp_jual
-		$this->db->where(array('session_id'=>$session_id));
+		$this->db->where(array('pelanggan_id'=>$pelanggan_id));
 		$this->db->delete('temp_jual');
+		if ($this->db->trans_status() === FALSE){
+			$this->db->trans_rollback();
+			echo json_encode(array('msg'=>'Gagal disimpan'));
+		}else{
+			$this->db->trans_commit();
+			echo json_encode(array('success'=>'Tersimpan','id'=>$shop_id));
+		}
+	}
+	public function invoice($id){
+		$sql = "select s.*,sd.*,k.nama kecamatan_nama, kk.nama kabkota_nama, p.nama provinsi_nama,b.nama barang_nama,b.kode_barang barang_kode
+		from shop s
+		left join shop_detail sd on s.id = sd.shop_id
+		left join provinsi p on s.provinsi_id = p.id
+		left join kabkota kk on s.kabkota_id = kk.id
+		left join kecamatan k on s.kecamatan_id = k.id
+		left join barang b on sd.barang_id = b.id
+		where s.id = '$id'";
+		return $this->db->query($sql)->result_array();
+	}
+	public function konfirmasi($value='')
+	{
+		$this->db->trans_begin();
+		$data = array(
+			'pelanggan_id' => $this->session->userdata('id'),
+			'isi'=>$_POST['isi'],
+			'waktu'=>date("Y-m-d H:i:s"),
+			'tipe'=>'konfirmasi Pembayaran',
+			);
+		$this->db->insert('pesan',$data);
 		if ($this->db->trans_status() === FALSE){
 			$this->db->trans_rollback();
 			echo json_encode(array('msg'=>'Gagal disimpan'));
@@ -136,9 +171,5 @@ class shop_model extends MY_Model {
 			$this->db->trans_commit();
 			echo json_encode(array('success'=>'Tersimpan'));
 		}
-	}
-	public function getWhere($where){
-		$query = "select * from {$this->table} where $where";
-		return $this->db->query($query)->row_array();
 	}
 }

@@ -55,8 +55,7 @@ class shipping_model extends MY_Model {
     	$provinsi_id = $_POST['provinsi_id'];
     	$kabkota_id = $_POST['kabkota_id'];
     	$kecamatan_id = $_POST['kecamatan_id'];
-    	$berat = ($_POST['berat']/1000);
-    	$sql = "select * from harga_kurir where provinsi_id='$provinsi_id' and kabkota_id='$kabkota_id' and kecamatan_id = '$kecamatan_id' and berat > $berat order by harga asc limit 1";
+    	$sql = "select * from harga_kurir where provinsi_id='$provinsi_id' and kabkota_id='$kabkota_id' and kecamatan_id = '$kecamatan_id' order by harga asc limit 1";
     	return $this->db->query($sql);
     }
     public function kecamatan($value='')

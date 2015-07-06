@@ -1,13 +1,14 @@
-<?php $landing_page = $this->auth->landing_page(); ?>
+<?php $landing_page = $this->auth->landing_page(4); ?>
 <div class="col-sm-12 padding-right">
-	<div class="features_items"><!--features_items-->
+	<!--features_items-->
+	<div class="features_items">
 		<h2 class="title text-center">Features Items</h2>
 		<?php 
 			$i = 0;
 			foreach ($landing_page as $r) {
 
 		?>
-		<div class="col-sm-2">
+		<div class="col-sm-6">
 			<div class="product-image-wrapper">
 				<div class="single-products">
 					<div class="productinfo text-center">
@@ -29,11 +30,12 @@
 		</div>
 		<?php } ?>
 		
-	</div><!--features_items-->
-<?php
-	$kategoriProduk = $this->auth->kategoriProduk();
-?>	
-	<div class="category-tab"><!--category-tab-->
+	</div>
+	<!--features_items-->
+	<!--category-tab-->
+	<!--
+	<?php $kategoriProduk = $this->auth->kategoriProduk();?>	
+	<div class="category-tab">
 		<div class="col-sm-12">
 			<ul class="nav nav-tabs">
 				<?php 
@@ -72,8 +74,11 @@
 			</div>
 		<?php } ?>
 		</div>
-	</div><!--/category-tab-->
-	<div class="recommended_items"><!--recommended_items-->
+	</div>
+	-->
+	<!--/category-tab-->
+	<!--recommended_items-->
+	<!-- <div class="recommended_items">
 		<h2 class="title text-center">recommended items</h2>
 		
 		<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -119,6 +124,6 @@
 				<i class="fa fa-angle-right"></i>
 			  </a>			
 		</div>
-	</div><!--/recommended_items-->
-	
+	</div> -->
+	<!--/recommended_items-->
 </div>

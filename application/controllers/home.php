@@ -146,16 +146,20 @@ class home extends CI_Controller {
 				$this->pelanggan_model->profile_save();
 			}else{
 				$this->load->model('pelanggan_model');
+				$this->load->model('shop_model');
 				$data = array(
 					'data' => $this->pelanggan_model->getById($this->session->userdata('id')),
 					'list' => array(
 						array('nama'=>'My Account','url'=>site_url('home/my_account')),
 						array('nama'=>'My Cart','url'=>site_url('home/my_cart')),
-						array('nama'=>'History Belanja','url'=>site_url('home/my_account/history_belanja')),
+						array('nama'=>'History Belanja','url'=>site_url('home/my_account/history')),
 						array('nama'=>'Logout','url'=>site_url('home/logout')),
 						),
 					'param'=>$param
 					);
+				if($param == 'history'){
+					$data['data'] = $this->db->get_where('shop',array('pelanggan_id'=>$this->session->userdata('id')));
+				}
 				$this->load->view('front/my_account',$data);
 			}
 		}else{

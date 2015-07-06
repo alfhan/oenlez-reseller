@@ -2,6 +2,7 @@
     $this->load->view('front/header');
     $left = $this->auth->bannerLoad("and posisi = 0");
 ?>
+<link href="<?php echo base_url('adminlte/css/datatables/dataTables.bootstrap.css');?>" rel="stylesheet" type="text/css" />
 <body>
     <?php $this->load->view('front/nav');?>
     <section>
@@ -46,6 +47,8 @@
     </section>
     <?php $this->load->view('front/footer');?>
     <script src="<?=base_url()?>asset/js/jquery.js"></script>
+    <script src="<?php echo base_url('adminlte/js/plugins/datatables/jquery.dataTables.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('adminlte/js/plugins/datatables/dataTables.bootstrap.js');?>" type="text/javascript"></script>
     <script src="<?=base_url()?>asset/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>asset/js/jquery.scrollUp.min.js"></script>
     <script src="<?=base_url()?>asset/js/price-range.js"></script>
@@ -54,6 +57,15 @@
     <script src="<?=base_url('adminlte/js/bootbox.min.js');?>" type="text/javascript"></script>
     <script src="<?=base_url('adminlte/js/jquery.form.min.js');?>" type="text/javascript"></script>
     <script type="text/javascript">
+    <?php
+        if($param == 'history'){
+    ?>
+    $(document).ready(function(){
+        $("#tb").dataTable({
+            "bSort":false
+        });
+    });
+    <?php } ?>
     var berforeSendLoading = bootbox.dialog({
           title: "Loading",
           message: "<div class='progress sm progress-striped active'>"+

@@ -55,8 +55,8 @@ class profil_model extends MY_Model {
 		$config['source_image'] = $images;
 		/*$config['create_thumb'] = TRUE;*/
 		$config['maintain_ratio'] = false;
-		$config['width']         = 139;
-		$config['height']       = 39;
+		$config['width']         = 200;
+		$config['height']       = 50;
 		$config['new_image'] = "images/company/logo.jpg";
 		$this->image_lib->initialize($config);
 		$this->image_lib->clear();

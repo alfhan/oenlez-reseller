@@ -26,14 +26,13 @@
 							$i++;
 					?>
 						<div class="item <?=$active?>">
-							<div class="col-sm-6">
-								<h1><?=$prof->nama?></h1>
+							<div class="col-sm-4">
+								<h1><span>O</span>-enlez</h1>
 								<h2><?=$r['judul'];?></h2>
 								<p><?=nl2br($r['keterangan'])?></p>
-								<!-- <button type="button" class="btn btn-default get">Get it now</button> -->
 							</div>
-							<div class="col-sm-6">
-								<img src="<?=base_url('images/slide_show/'.$r['foto'])?>" class="girl img-responsive" alt="" />
+							<div class="col-sm-8">
+								<img src="<?=base_url('images/slide_show/'.$r['foto'])?>" class="girl img-responsive pull-right" alt="" />
 							</div>
 						</div>
 					<?php } ?>
