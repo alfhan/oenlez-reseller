@@ -51,10 +51,10 @@
                             ?>
                             <ul>
                                 <li>
-                                    <a href="<?=$profil->fb?>"><i class="fa fa-facebook"></i></a>
+                                    <a href="<?=$profil->fb;?>"><i class="fa fa-facebook"></i></a>
                                 </li>
                                 <li>
-                                    <a href="<?=$profil->twitter?>"><i class="fa fa-twitter"></i></a>
+                                    <a href="<?=$profil->twitter;?>"><i class="fa fa-twitter"></i></a>
                                 </li>
                             </ul>
                         </div>

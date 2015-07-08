@@ -119,12 +119,12 @@ class barang_model extends MY_Model {
     {
     	#recomended
     	$recomended_path = 'images/recomended';
-    	$recomended_width = 268;
-    	$recomended_height = 134;
+    	$recomended_width = 200;
+    	$recomended_height = 250;
     	#kategori&feature
     	$kategori_feature_path = 'images/kategori_feature';
-    	$kategori_feature_width = 268;
-    	$kategori_feature_height = 249;
+    	$kategori_feature_width = 400;
+    	$kategori_feature_height = 500;
 		$data[] = array(
     			'path'=>$kategori_feature_path,
     			'width'=>$kategori_feature_width,

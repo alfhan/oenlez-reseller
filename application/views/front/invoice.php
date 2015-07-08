@@ -1,6 +1,7 @@
 <?php  
     $this->load->view('front/header');
     $left = $this->auth->bannerLoad("and posisi = 0");
+    $infoPembayaran = $this->auth->infoPembayaran();
 ?>
 <body>
     <?php $this->load->view('front/nav');?>
@@ -20,12 +21,8 @@
               <br />
               <?=$list[0]['provinsi_nama'];?> - <?=$list[0]['kabkota_nama'];?> - <?=$list[0]['kecamatan_nama'];?>
             </td>
-            <td valign="top" align="center">
-              Bank Mandiri
-              <br />
-              Taufik Ute Alfan
-              <br />
-              <b>1440025887</b>
+            <td valign="top">
+              <?=nl2br($infoPembayaran['isi'])?>
             </td>
           </tr>
         </table>
@@ -42,7 +39,7 @@
             $jml = $r['harga']*$r['qty'];
             $subT += $jml;
             echo "<tr>
-            <td>$r[barang_kode] - $r[barang_nama] - $r[qty]</td>
+            <td>$r[barang_kode] - $r[barang_nama] - Qty : $r[qty]</td>
             <td align='right'>$r[harga]</td>
             <td align='right'>$jml</td>
             </tr>";  
@@ -63,12 +60,14 @@
           </tr>
         </table>
         <br />
-        <a href="<?=site_url('product/history_trx')?>" class="btn btn-md btn-success">
+        <a href="<?=site_url('home/my_account/history')?>" class="btn btn-md btn-success">
           <i class="fa fa-arrow-left"></i> Kembali
         </a>
+        <?php if($list[0]['status_order'] == 1){ ?>
         <a href="javascript:void(0)" class="btn btn-md btn-danger pull-right" onclick="konfirmasi()">
           <i class="fa fa-money"></i> Konfirmasi Pembayaran
         </a>
+        <?php } ?>
       </div>
     </section>        
     <?php $this->load->view('front/footer');?>

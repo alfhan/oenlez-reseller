@@ -9,7 +9,7 @@
 					<div class="contactinfo">
 						<ul class="nav nav-pills">
 							<li><a href="#"><i class="fa fa-phone"></i> <?=$profile->telp?></a></li>
-							<li><a href="#"><i class="fa fa-envelope"></i> <?=$profile->alamat?></a></li>
+							<li><a href="#"><i class="fa fa-envelope"></i> <?=$profile->email?></a></li>
 						</ul>
 					</div>
 				</div>
@@ -78,11 +78,11 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-3">
+				<!-- <div class="col-sm-3">
 					<div class="search_box pull-right">
 						<input type="text" placeholder="Search"/>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div><!--/header-bottom-->

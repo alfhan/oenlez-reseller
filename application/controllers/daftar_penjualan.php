@@ -8,7 +8,7 @@ class daftar_penjualan extends CI_Controller {
 		if($this->session->userdata('login') === FALSE){	
             redirect(base_url());
 		}else{
-			$this->load->model('penjualan_model');
+			$this->load->model('shop_model');
 		}
     }
 	public function index(){
@@ -16,13 +16,13 @@ class daftar_penjualan extends CI_Controller {
 		$index = array(
 			'title' => 'Daftar Penjualan',
 			'link' => $this->kelas, 
-			'data' => $this->penjualan_model->get(),
+			'data' => $this->shop_model->daftar_penjualan(),
 			);
 		$js = array(
 			'urlSave' => base_url($this->kelas . "/simpan"),
 			'urlDelete' => base_url($this->kelas . "/hapus"),
 			);
-		$content['content'] = $this->parser->parse($this->kelas .'/index', $index, true);
+		$content['content'] = $this->load->view($this->kelas .'/index', $index, true);
 		$content['js'] = $this->load->view($this->kelas .'/js', $js, true);
 		$this->load->view('newindex', $content);
 	}
@@ -30,21 +30,24 @@ class daftar_penjualan extends CI_Controller {
 	{
 		$this->load->library('parser');
 		$index = array(
-			'title' => 'Form Penjualan',
+			'title' => 'Detail Order',
 			'link' => $this->kelas, 
-			'r' => $this->penjualan_model->getById($id),
+			'list' => $this->shop_model->getById($id)->result_array(),
 			);
 		$js = array(
 			'urlSave' => base_url($this->kelas . "/simpan"),
+			'id'=>$id
 			);
-		$content['content'] = $this->parser->parse($this->kelas .'/form', $index, true);
+		$content['content'] = $this->load->view($this->kelas .'/form', $index, true);
 		$content['js'] = $this->load->view($this->kelas .'/form_js', $js, true);
 		$this->load->view('newindex', $content);
 	}
 	public function simpan(){
-		$this->pelanggan_model->simpan('pelanggan');
+		$this->shop_model->simpan('shop');
 	}
 	public function hapus(){
-		$this->pelanggan_model->hapus('pelanggan');
+		$this->db->where(array('shop_id'=>$_POST['id']));
+		$this->db->delete('shop_detail');
+		$this->shop_model->hapus('shop');
 	}
 }

@@ -45,7 +45,7 @@ class daftar_pelanggan extends CI_Controller {
 		if(empty($_POST['password'])){
 			unset($_POST['password']);
 		}else{
-			$_POST['password'] = md5($_POST['password']);
+			$_POST['password'] = sha1(md5($_POST['password']));
 		}
 		$this->pelanggan_model->simpan('pelanggan');
 	}

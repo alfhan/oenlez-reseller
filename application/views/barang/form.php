@@ -24,8 +24,8 @@
 		                    <label for="recomended_item" class="col-sm-2 control-label">Recomended Item</label>
 		                    <div class="col-md-3">
 		                    	<select name="recomended_item" id="recomended_item" class="form-control input-sm">
-		                    		<option value="1">Ya</option>
-		                    		<option value="0">Tidak</option>
+		                    		<option value="1" <?=$data['recomended_item'] == 1 ? "selected='selected'":""?>>Ya</option>
+		                    		<option value="0" <?=$data['recomended_item'] == 0 ? "selected='selected'":""?>>Tidak</option>
 		                    	</select>
 		                    </div>
 		                </div>

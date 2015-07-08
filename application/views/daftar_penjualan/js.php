@@ -40,7 +40,7 @@
                   $.ajax({
                     data:{id:id},
                     type:'POST',
-                    url:"<?=base_url('daftar_pelanggan/hapus');?>",
+                    url:"<?=base_url('daftar_penjualan/hapus');?>",
                     success:function(r){
                     berforeSendLoading.modal('hide');
                     successDialog.modal('show');

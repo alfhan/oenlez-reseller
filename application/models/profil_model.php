@@ -28,6 +28,7 @@ class profil_model extends MY_Model {
 		$data = array(
 			'nama' => $this->input->post('nama'),
 			'alamat' => $this->input->post('alamat'),
+			'kabkota' => $this->input->post('kabkota'),
 			'telp' => $this->input->post('telepon'),
 			'email' => $this->input->post('email'),
 			'fb' => $this->input->post('fb'),

@@ -146,3 +146,30 @@ function numIndoNull($num,$precision=3){
 function generateRandomString($length = 4) {
     return substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 }
+function statusOrder($value='')
+{
+    $data = array(
+        1=>'New Order',
+        2=>'Terbayar',
+        3=>'Packing',
+        4=>'Pengiriman',
+        5=>'Selesai',
+        );
+    if($value)
+        return $data[$value];
+    else
+        return $data;
+}
+function colorStatusOrder($id=''){
+    $data = array(
+        1=>'bg-blue',
+        2=>'bg-green',
+        3=>'bg-olive',
+        4=>'bg-orange',
+        5=>'bg-marron',
+        );
+    if($id)
+        return $data[$id];
+    else
+        return $data;
+}

@@ -16,12 +16,16 @@ class pesan_model extends MY_Model {
 	public function konfirmasi($value='')
 	{
 		$this->db->trans_begin();
+		$id = $this->session->userdata('id');
+		$rs = $this->db->get_where('pelanggan',array('id'=>$id))->row_array();
 		$data = array(
-			'pelanggan_id' => $this->session->userdata('id'),
+			'pelanggan_id' => $id, 
 			'isi'=>$_POST['isi'],
 			'waktu'=>date("Y-m-d H:i:s"),
-			'tipe'=>'konfirmasi Pembayaran',
-			'status'=>1,
+			'tipe'=>'Order Barang',
+			'status'=>0,
+			'subject'=>'Konfirmasi Pembayaran',
+			'email'=>$rs['username'],
 			);
 		$this->db->insert('pesan',$data);
 		if ($this->db->trans_status() === FALSE){
@@ -39,7 +43,7 @@ class pesan_model extends MY_Model {
 			'pelanggan_id' => $this->session->userdata('id'),
 			'isi'=>$_POST['isi'],
 			'waktu'=>date("Y-m-d H:i:s"),
-			'tipe'=>'konfirmasi Pembayaran',
+			/*'tipe'=>'Konfirmasi Pembayaran',*/
 			'parent_id'=>$_POST['id'],
 			);
 		if($this->session->userdata('tipe') == sha1(md5(OWNER))){
@@ -69,5 +73,18 @@ class pesan_model extends MY_Model {
 		$this->db->order_by('updated_at','desc');
 		$result['parent'] = $this->db->get_where('pesan',array('id'=>$value))->row_array();
 		return $result;
+	}
+
+	public function forCustomer($value='')
+	{
+		$pelangganId = $this->session->userdata('id');
+		$sql = "select * from pesan where parent_id = 0 and pelanggan_id = '$pelangganId' order by waktu asc";
+		return $this->db->query($sql)->result_array();
+	}
+	public function detailMessageCustomers($id)
+	{
+		$sql = "select * from pesan where parent_id = '$id' or id='$id' order by waktu asc";
+		$rs = $this->db->query($sql)->result_array();
+		return $rs;
 	}
 }

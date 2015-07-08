@@ -18,9 +18,10 @@
                <thead>
                    <tr>
                        <th width="35">No</th>
+                       <th>Subject</th>
                        <th>Tanggal</th>
-                       <th>Tipe / Status</th>
-                       <th>Pesan</th>
+                       <th>Tipe</th>
+                       <th>Email</th>
                        <th width="125">Aksi</th>
                    </tr>
                </thead>
@@ -32,9 +33,10 @@
                 ?>
                 <tr <?=$act?>>
                     <td><?=$no++?></td>
+                    <td><?=$r['subject']?></td>
                     <td><?=dateToIndo($r['waktu'],true,true)?></td>
                     <td><?=ucwords($r['tipe'])?></td>
-                    <td><?=nl2br($r['isi'])?></td>
+                    <td><?=$r['email']?></td>
                     <td>
                         <a href="<?="$link/form/$r[id]"?>" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Balas</a>
                         <a href="#" class="btn btn-xs btn-danger" onclick="deleteClick('<?=$r['id']?>')"><i class="fa fa-remove"></i> Hapus</a>

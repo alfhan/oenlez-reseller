@@ -31,6 +31,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="kabkota" class="col-sm-3 control-label">Kab/Kota</label>
+                        <div class="col-sm-8">
+                            <input name="kabkota" id="kabkota" class="form-control input-sm" required value="<?=$data->kabkota?>" />
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="telepon" class="col-sm-3 control-label">Telepon</label>
                         <div class="col-sm-5">
                             <input name="telepon" id="telepon" class="form-control input-sm" required value="<?=$data->telp?>" />

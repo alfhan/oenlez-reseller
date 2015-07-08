@@ -140,17 +140,138 @@ class shop_model extends MY_Model {
 			echo json_encode(array('msg'=>'Gagal disimpan'));
 		}else{
 			$this->db->trans_commit();
+			$this->kirim_invoice($shop_id);
 			echo json_encode(array('success'=>'Tersimpan','id'=>$shop_id));
 		}
 	}
+	public function kirim_invoice($shop_id)
+	{
+		$infoPembayaran = $this->auth->infoPembayaran();
+		$list = $this->invoice($shop_id);
+		$to = $list[0]['username'];
+		$no_invoice = $list[0]['no_invoice'];
+		$nama = $list[0]['nama'];
+		$alamat = $list[0]['alamat'];
+		$kode_pos = $list[0]['kode_pos'];
+		$provinsi = $list[0]['provinsi_nama'];
+		$kabkota = $list[0]['kabkota_nama'];
+		$kec = $list[0]['kecamatan_nama'];
+		$harga_kirim = $list[0]['harga_kirim'];
+
+		$message = "
+		<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Invoice $shop_id</title>
+			</head>
+			<body>
+			<h3>Invoice</h3>
+				<table width='100%' border='1' rules='all'>
+				  <tr>
+				    <th width='50%'>No Invoice #$no_invoice</th>
+				    <th>Pay to</th>
+				  </tr>
+				  <tr>
+				    <td valign='top'>
+				      $nama
+				      <br />
+				      $alamat $kode_pos
+				      <br />
+				      
+				    </td>
+				    <td valign='top'>
+				      ".nl2br($infoPembayaran['isi'])."
+				    </td>
+				  </tr>
+				</table>
+				<h3>Detail Invoice</h3>
+				<table width='100%' rules='all' border='1'>
+				  <tr>
+				    <th><center>Items</center></th>
+				    <th width='120'><center>Harga</center></th>
+				    <th width='120'><center>Jumlah (Rp)</center></th>
+				  </tr>";
+				  
+				  $subT = 0;
+				  foreach ($list as $r) {
+				    $jml = $r['harga']*$r['qty'];
+				    $subT += $jml;
+				    $message .= "<tr>
+				    <td>$r[barang_kode] - $r[barang_nama] - Qty : $r[qty]</td>
+				    <td align='right'>$r[harga]</td>
+				    <td align='right'>$jml</td>
+				    </tr>";  
+				  }
+				  $total = $harga_kirim+$subT;
+			$message .= "<tr>
+				    <td colspan='2' align='right'>Sub Total (Rp)</td>
+				    <td align='right'><b><?=$subT?></b></td>
+				  </tr>
+				  <tr>
+				    <td colspan='2' align='right'>Delivery (Rp)</td>
+				    <td align='right'><b>$harga_kirim</b></td>
+				  </tr>
+				  <tr>
+				    <td colspan='2' align='right'>Total (Rp)</td>
+				    <td align='right'><b>$total</b></td>
+				  </tr>
+				</table>
+			</body>
+		</html>
+		";
+		$subject = "New Order #$no_invoice";
+		/*$config = array(
+			'protocol'=>'smtp',
+			'smtp_host'=>'ssl://smtp.gmail.com',
+			'smtp_post'=>465,
+			'smtp_user'=>'alfhanz@gmail.com',
+			'smtp_pass'=>'010988alfhan',
+			'mail_type'=>'html',
+			'charset'=>'utf-8',
+			'newline'=>"\r\n",
+			'wordwrap'=>TRUE
+			);
+		$this->load->library('email');
+		$this->email->initialize($config);
+		$this->email->from('sales@oenlez.com','Oenlez Sales');
+		$this->email->to($to);
+		$this->email->subject($subject);
+		$this->email->message($message);
+		$this->email->send();*/
+		$config = Array(
+	      'protocol' => 'smtp',
+	      'smtp_host' => 'ssl://smtp.gmail.com',
+	      'smtp_port' => 465,
+	      'smtp_user' => 'alfhanz@gmail.com', //isi dengan gmailmu!
+	      'smtp_pass' => '010988alfhan', //isi dengan password gmailmu!
+	      'mailtype' => 'html',
+	      'charset' => 'utf-8',
+	      'newline' => "\r\n",
+	      'wordwrap' => TRUE
+	    );
+		$this->load->library('email');
+		$this->email->initialize($config);
+		
+		$this->email->from('sales@oenlez.com', 'Oenlez Sales');
+		$this->email->to($to); 
+
+		$this->email->subject($subject);
+		$this->email->message($message);	
+
+		$this->email->send();
+
+		echo $this->email->print_debugger();
+	}
 	public function invoice($id){
-		$sql = "select s.*,sd.*,k.nama kecamatan_nama, kk.nama kabkota_nama, p.nama provinsi_nama,b.nama barang_nama,b.kode_barang barang_kode
+		$sql = "select s.*,sd.*,k.nama kecamatan_nama, kk.nama kabkota_nama, p.nama provinsi_nama,b.nama barang_nama,b.kode_barang barang_kode,
+		pel.username
 		from shop s
 		left join shop_detail sd on s.id = sd.shop_id
 		left join provinsi p on s.provinsi_id = p.id
 		left join kabkota kk on s.kabkota_id = kk.id
 		left join kecamatan k on s.kecamatan_id = k.id
 		left join barang b on sd.barang_id = b.id
+		left join pelanggan pel on s.pelanggan_id = pel.id
 		where s.id = '$id'";
 		return $this->db->query($sql)->result_array();
 	}
@@ -171,5 +292,32 @@ class shop_model extends MY_Model {
 			$this->db->trans_commit();
 			echo json_encode(array('success'=>'Tersimpan'));
 		}
+	}
+	public function daftar_penjualan($value='')
+	{
+		$sql = "select s.*,p.nama pelanggan_nama, pov.nama provinsi_nama, kk.nama kabkota_nama,k.nama kecamatan_nama
+		from shop s 
+		left join pelanggan p on s.pelanggan_id = p.id
+		left join kabkota kk on s.kabkota_id = kk.id
+		left join provinsi pov on s.provinsi_id = pov.id
+		left join kecamatan k on s.kecamatan_id = k.id
+		order by tanggal desc";
+		return $this->db->query($sql);
+	}
+	public function getById($id)
+	{
+		$sql = "select s.*,p.nama pelanggan_nama,p.no_pelanggan,p.alamat pelanggan_alamat,p.username, pov.nama provinsi_nama, 
+		kk.nama kabkota_nama,k.nama kecamatan_nama, b.kode_barang barang_kode,b.nama barang_nama,
+		sd.harga, sd.qty
+		from shop s 
+		left join shop_detail sd on sd.shop_id = s.id
+		left join barang b on sd.barang_id = b.id
+		left join pelanggan p on s.pelanggan_id = p.id
+		left join kabkota kk on s.kabkota_id = kk.id
+		left join provinsi pov on s.provinsi_id = pov.id
+		left join kecamatan k on s.kecamatan_id = k.id
+		where s.id = '$id'
+		order by tanggal desc";
+		return $this->db->query($sql);
 	}
 }

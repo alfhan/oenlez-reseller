@@ -47,6 +47,8 @@ class notifikasi extends CI_Controller {
 		$this->pesan_model->balaspesan();
 	}
 	public function hapus(){
-		$this->pesan_model->delete();
+		$this->db->where(array('parent_id'=>$_POST['id']));
+		$this->db->delete('pesan');
+		$this->pesan_model->hapus('pesan');
 	}
 }

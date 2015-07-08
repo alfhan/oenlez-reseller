@@ -83,7 +83,7 @@
                                 </span>
                                 <p><b>Availability:</b> <?=$data['ready_stock'] == 1 ? "In Stock":"Out of Stock"?></p>
                                 <p><b>Weight:</b> <?=$data['berat']?> <small>gr</small></p>
-                                <p><b>Brand:</b> E-SHOPPER</p>
+                                <p><b>Brand:</b> Oenlez</p>
                                 <!-- <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
                             </div><!--/product-information-->
                         </div>
@@ -139,8 +139,8 @@
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <?php foreach($this->auth->recomendedItem("0,3") as $r){ ?>
-                                    <div class="col-sm-4">
+                                    <?php foreach($this->auth->recomendedItem("0,2") as $r){ ?>
+                                    <div class="col-sm-6">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
@@ -155,8 +155,8 @@
                                     <?php } ?>
                                 </div>
                                 <div class="item">  
-                                    <?php foreach($this->auth->recomendedItem("3,3") as $r){ ?>
-                                    <div class="col-sm-4">
+                                    <?php foreach($this->auth->recomendedItem("2,4") as $r){ ?>
+                                    <div class="col-sm-6">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">

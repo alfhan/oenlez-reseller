@@ -55,27 +55,27 @@ $(document).ready(function(){
             
         });
     }
-	function deleteClick(id,foto){
+	function deleteClick(id){
 		bootbox.confirm("Apakah anda yakin ingin menghapus?", function(result) {
 			if (result == true) {
-                $.ajax({
-                	data:{id:id,foto:foto},
-                	type:'POST',
-                	url:'<?php echo $urlDelete;?>',
-                	success:function(r){
-		              berforeSendLoading.modal('hide');
-		              successDialog.modal('show');
-		              window.open("<?php echo base_url($link);?>","_self");
-		            },
-		            error:function(r){
-		              berforeSendLoading.modal('hide');
-		              errorDialog.modal('show');
-		            },
-                	beforeSend:function(r){
-                	  berforeSendLoading.modal('show');
-                	}
-                });
-            }
+            $.ajax({
+            	data:{id:id},
+            	type:'POST',
+            	url:'<?php echo $urlDelete;?>',
+            	success:function(r){
+              berforeSendLoading.modal('hide');
+              successDialog.modal('show');
+              //window.open("<?php echo base_url($link);?>","_self");
+            },
+            error:function(r){
+              berforeSendLoading.modal('hide');
+              errorDialog.modal('show');
+            },
+            	beforeSend:function(r){
+            	  berforeSendLoading.modal('show');
+            	}
+            });
+        }
 		});
 	}
 </script>

@@ -43,7 +43,7 @@
 	        success:function(r){
 	          berforeSendLoading.modal('hide');
 	          successDialog.modal('show');
-	          window.open("<?=base_url('daftar_pelanggan')?>","_self");
+	          window.open("<?=base_url('daftar_penjualan')?>","_self");
 	        },
 	        error:function(r){
 	          berforeSendLoading.modal('hide');

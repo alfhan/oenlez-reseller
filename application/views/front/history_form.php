@@ -6,6 +6,7 @@
 			<th>No Invoice</th>
 			<th>Total</th>
 			<th>Penerima</th>
+			<th>Status</th>
 			<th>Detail</th>
 		</tr>
 	</thead>
@@ -19,6 +20,7 @@
 		<td>$r[no_invoice]</td>
 		<td>$r[total]</td>
 		<td>$r[nama]</td>
+		<td>".statusOrder($r['status_order'])."</td>
 		<td><a href='".site_url('product/invoice')."/$r[id]' class='btn btn-xs btn-info'><i class='fa fa-search'></i> Detail</a></td>
 		</tr>";
 		$n++;	

@@ -1,5 +1,5 @@
 <section class="content-header">
-	<h1>{title}</h1>
+	<h1><?=$title?></h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-shopping-cart"></i> Sales Mangement</a></li>
         <li><a href="<?php echo base_url($link);?>"><i class="fa fa-angle-double-right"></i> {title}</a></li>
@@ -10,58 +10,103 @@
 		<div class="col-md-12">
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">{title}</h3>
+					<h3 class="box-title"><?=$title?></h3>
 				</div>
 				<div class="box-body">
-					<form class="cmxform form-horizontal tasi-form" role="form" id="myForm">
-		                <input type="hidden" name="id" id="id" value="<?=@$data['id']?>" />
-		                <div class="form-group">
-		                	<label class="col-md-3 control-label">Kode Pelanggan</label>
-		                	<div class="col-md-3">
-		                		<input name="no_pelanggan" id="no_pelanggan" class="form-control input-sm" value="<?=@$r['no_pelanggan']?>">
-		                	</div>
-		                	<label class="col-md-2 control-label">Username(Email)</label>
-		                	<div class="col-md-2">
-		                		<input name="username" id="username" type="email" class="form-control input-sm" value="<?=@$r['username']?>">
-		                	</div>
-		                </div>
-		                <div class="form-group">
-		                	<label class="col-md-3 control-label">Nama Pelanggan</label>
-		                	<div class="col-md-3">
-		                		<input name="nama" id="nama" class="form-control input-sm" value="<?=@$r['nama']?>" autocomplete="off">
-		                	</div>
-		                	<label class="col-md-2 control-label">Password</label>
-		                	<div class="col-md-2">
-		                		<input name="password" type="password" id="password" class="form-control input-sm" value="">
-		                	</div>
-		                </div>
-		                <div class="form-group">
-		                	<label class="col-md-3 control-label">Alamat</label>
-		                	<div class="col-md-4">
-		                		<input name="alamat" id="alamat" class="form-control input-sm" value="<?=@$r['alamat']?>">
-		                	</div>
-		                	<label class="col-md-1 control-label">Kode Pos</label>
-		                	<div class="col-md-2">
-		                		<input name="kode_pos" id="kode_pos" class="form-control input-sm" value="<?=@$r['kode_pos']?>">
-		                	</div>
-		                </div>
-		                <div class="form-group">
-		                	<label class="col-md-3 control-label">Kab/Kota</label>
-		                	<div class="col-md-3">
-		                		<input name="kab_kota" id="kab_kota" class="form-control input-sm" value="<?=@$r['kab_kota']?>">
-		                	</div>
-		                </div>
-		                <div class="form-group">
-		                	<label class="col-md-3 control-label">No HP</label>
-		                	<div class="col-md-2">
-		                		<input name="hp" id="hp" class="form-control input-sm" value="<?=@$r['hp']?>">
-		                	</div>
-		                </div>
-		            </form>
+				<h3>Pengirim</h3>
+				<form id="x">
+					<table width="100%" border="1" rules="all">
+						<tr>
+							<td width="150">No Customers</td>
+							<td><?=$list[0]['no_pelanggan']?></td>
+							<td width="150">Nama Pelanggan</td>
+							<td><?=$list[0]['pelanggan_nama']?></td>
+						</tr>
+						<tr>
+							<td>Alamat Pelanggan</td>
+							<td><?=$list[0]['pelanggan_alamat']?></td>
+							<td>Username/Email</td>
+							<td><?=$list[0]['username']?></td>
+						</tr>
+					</table>
+				</form>
+				<h3>Invoice</h3>
+				<form id="myForm">
+					<input type="hidden" name="id" value="<?=$list[0]['id']?>">
+			        <table width="100%" border="1" rules="all">
+			          <tr>
+			            <th width="50%">No Invoice <i style="color:red"><u>#<?=$list[0]['no_invoice']?></u></i></th>
+			            <th>Status Invoice : <i style="color:red"><u><?=statusOrder($list[0]['status_order'])?></u></i></th>
+			          </tr>
+			          <tr>
+			            <td valign="top">
+			              <?=$list[0]['nama'];?>
+			              <br />
+			              <?=$list[0]['alamat'];?> <?=$list[0]['kode_pos'];?>
+			              <br />
+			              <?=$list[0]['provinsi_nama'];?> - <?=$list[0]['kabkota_nama'];?> - <?=$list[0]['kecamatan_nama'];?>
+			            </td>
+			            <td valign="top" align="center">
+				            <label class="col-md-3">Update Status</label>
+				            <div class="col-md-3">
+				              <select class="form-control input-sm" name="status_order" id="status_order">
+				              	<?php
+				              	foreach (statusOrder() as $key => $value) {
+				              		if($key == $list[0]['status_order']){
+				              			$sl = "selected='selected'";
+				              		}else{
+				              			$sl = "";
+				              		}
+				              		echo "<option value='$key' $sl>$value</option>";
+				              	}
+				              	?>
+				              </select>
+				            </div>
+				            <div class="col-md-6">
+				            	<a href="<?=base_url('daftar_penjualan');?>" class="btn btn-sm btn-info"><i class="fa fa-angle-double-left"></i> Kembali</a>
+						<a href="javascript:void(0)" class="btn btn-sm btn-primary save-click pull-right"><i class="fa fa-save"></i> Simpan</a>
+				            </div>
+			            </td>
+			          </tr>
+			        </table>
+		        </form>
+		        <h3>Detail Invoice</h3>
+		        <table width="100%" rules="all" border="1">
+		          <tr>
+		            <th><center>Items</center></th>
+		            <th width="120"><center>Harga</center></th>
+		            <th width="120"><center>Jumlah (Rp)</center></th>
+		          </tr>
+		          <?php 
+		          $subT = 0;
+
+		          foreach ($list as $r) {
+		            $jml = $r['harga']*$r['qty'];
+		            $subT += $jml;
+		            echo "<tr>
+		            <td>$r[barang_kode] - $r[barang_nama] - Qty : $r[qty]</td>
+		            <td align='right'>$r[harga]</td>
+		            <td align='right'>$jml</td>
+		            </tr>";  
+		          }
+		          $total = $list[0]['harga_kirim']+$subT;
+		          ?>
+		          <tr>
+		            <td colspan="2" align="right">Sub Total (Rp)</td>
+		            <td align="right"><b><?=$subT?></b></td>
+		          </tr>
+		          <tr>
+		            <td colspan="2" align="right">Delivery (Rp)</td>
+		            <td align="right"><b><?=$list[0]['harga_kirim']?></b></td>
+		          </tr>
+		          <tr>
+		            <td colspan="2" align="right">Total (Rp)</td>
+		            <td align="right"><b><?=$total?></b></td>
+		          </tr>
+		        </table>
 				</div>
 				<div class="box-footer">
-					<a href="<?=base_url('daftar_pelanggan');?>" class="btn btn-sm btn-info"><i class="fa fa-angle-double-left"></i> Kembali</a>
-					<a href="javascript:void(0)" class="btn btn-sm btn-primary save-click pull-right"><i class="fa fa-save"></i> Simpan</a>
+					
 				</div>
 			</div>
 		</div>

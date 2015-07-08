@@ -58,7 +58,7 @@
     <script src="<?=base_url('adminlte/js/jquery.form.min.js');?>" type="text/javascript"></script>
     <script type="text/javascript">
     <?php
-        if($param == 'history'){
+        if($param == 'history' or $param == 'message'){
     ?>
     $(document).ready(function(){
         $("#tb").dataTable({

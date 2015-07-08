@@ -153,12 +153,17 @@ class home extends CI_Controller {
 						array('nama'=>'My Account','url'=>site_url('home/my_account')),
 						array('nama'=>'My Cart','url'=>site_url('home/my_cart')),
 						array('nama'=>'History Belanja','url'=>site_url('home/my_account/history')),
+						array('nama'=>'Message','url'=>site_url('home/my_account/message')),
 						array('nama'=>'Logout','url'=>site_url('home/logout')),
 						),
 					'param'=>$param
 					);
 				if($param == 'history'){
 					$data['data'] = $this->db->get_where('shop',array('pelanggan_id'=>$this->session->userdata('id')));
+				}
+				if($param == 'message'){
+					$this->load->model('pesan_model');
+					$data['data'] = $this->pesan_model->forCustomer();	
 				}
 				$this->load->view('front/my_account',$data);
 			}
@@ -183,5 +188,32 @@ class home extends CI_Controller {
 	{
 		$this->load->model('shipping_model');
 		$this->shipping_model->hapus($value);
+	}
+	public function coba($value='')
+	{
+		$config = Array(
+	      'protocol' => 'smtp',
+	      // 'smtp_host' => 'ssl://smtp.gmail.com',
+	      'smtp_host' => 'ssl://leios.rapidplex.com',
+	      'smtp_port' => 465,
+	      'smtp_user' => 'sales@oenlez.com', //isi dengan gmailmu!
+	      'smtp_pass' => 'oenlez1234', //isi dengan password gmailmu!
+	      'mailtype' => 'html',
+	      'charset' => 'utf-8',
+	      'newline' => "\r\n",
+	      'wordwrap' => TRUE
+	    );
+		$this->load->library('email');
+		$this->email->initialize($config);
+		
+		$this->email->from('sales@oenlez.com', 'Oenlez Sales');
+		$this->email->to('alfhan@yahoo.co.id'); 
+
+		$this->email->subject('New Order');
+		$this->email->message('Order Number #1234');	
+
+		$this->email->send();
+
+		echo $this->email->print_debugger();
 	}
 }
