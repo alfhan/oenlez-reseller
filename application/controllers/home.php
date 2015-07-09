@@ -11,7 +11,16 @@ class home extends CI_Controller {
 	}
 	function admin(){
 		if($this->session->userdata('login') === TRUE){
-            $this->load->view('newindex');
+			$index = array(
+				'title' => 'Dasdboard',
+				'link' => 'home', 
+				'data' => $this->auth->dashboard(),
+				);
+			$js = array();
+			$content['content'] = $this->load->view('dashboard/index', $index, true);
+			$content['js'] = $this->load->view('dashboard/js', $js, true);
+			$this->load->view('newindex', $content);
+            // $this->load->view('newindex');
 		}else{
 			$this->load->view('login');
 		}
