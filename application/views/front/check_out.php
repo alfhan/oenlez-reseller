@@ -158,8 +158,6 @@
             },
             success:function(r){
               berforeSendLoading.modal('hide');
-              alert('Transaksi Berhasil. . .');
-              var r = eval("("+r+")");
               window.open("<?=site_url('home/my_account/history')?>","_self");
             },
             error:function(r){

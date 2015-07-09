@@ -36,7 +36,7 @@
                                 $b += $berat;
                                 echo "<tr>
                                 <td>
-                                    <b>$r[kode_barang]</b> - $r[barang_nama] - $r[berat]gr 
+                                    <b>$r[kode_barang]</b> - $r[barang_nama] - $r[berat]gr - Min Pembelian ($r[min_pembelian])
                                     <a href='javascript:void(0)' class='btn btn-xs btn-danger' onclick=\"hapusClick('$r[id]')\"><i class='fa fa-minus'></i></a>
                                 </td>
                                 <td>$r[harga]</td>

@@ -19,6 +19,7 @@
 					</div>
 					<div class="product-overlay">
 						<div class="overlay-content">
+							<h3>Min Pembelian <?=$r['min_pembelian']?> Item</h3>
 							<h2>Rp <?=$r['harga_jual']?></h2>
 							<p><?=$r['nama']?></p>
 							<a href="<?=site_url('product/add/'.$r['id'])?>" class="btn btn-default btn-sm pull-left"><i class="fa fa-shopping-cart"></i> Add</a>

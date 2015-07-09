@@ -39,7 +39,7 @@
 		  <!-- small box -->
 		  <div class="small-box bg-blue">
 		    <div class="inner">
-		      <h3><?=$data['sales_item']['qty']?></h3>
+		      <h3><?=$data['sales_item']['qty'] ? $data['sales_item']['qty'] : 0?></h3>
 		      <p>Sales Items</p>
 		    </div>
 		    <div class="icon">
@@ -120,20 +120,20 @@
 	      </div>
 	      <div class="box box-success bg-green">
 	      	<div class="box-header">
-	      		<h3 class="box-title" style="color:white"><b><?=$data['total_pendapatan']['total']?></b></h3>
+	      		<h3 class="box-title" style="color:white"><b><?=numIndoNull($data['total_pendapatan']['total'],0)?></b></h3>
 	      	</div>
 	        <div class="box-body">
-	        	<a href="<?=site_url('rekap/total_pendapatan')?>" target="_blank" class="btn btn-default btn-xs">More info <i class="fa fa-arrow-circle-right"></i></a>
-	        	<label class="box-title pull-right" style="color:white">Total Pendapatan</label>
+	        	<!-- <a href="<?=site_url('rekap/total_pendapatan')?>" target="_blank" class="btn btn-default btn-xs">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+	        	<label class="control-label" style="color:white">Total Pendapatan</label>
 	        </div>
 	      </div>
 	      <div class="box box-primary bg-blue">
 	      	<div class="box-header">
-	      		<h3 class="box-title" style="color:white"><b><?=$data['total_pendapatan_bulan_ini']['total']?></b></h3>
+	      		<h3 class="box-title" style="color:white"><b><?=numIndoNull($data['total_pendapatan_bulan_ini']['total'],0)?></b></h3>
 	      	</div>
 	        <div class="box-body">
-	        	<a href="<?=site_url('rekap/bulan_ini')?>" target="_blank" class="btn btn-default btn-xs">More info <i class="fa fa-arrow-circle-right"></i></a>
-	        	<label class="box-title pull-right" style="color:white">Pendapatan Bulan Ini</label>
+	        	<!-- <a href="<?=site_url('rekap/bulan_ini')?>" target="_blank" class="btn btn-default btn-xs">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+	        	<label class="control-label" style="color:white">Pendapatan Bulan Ini</label>
 	        </div>
 	      </div>
 		</div>

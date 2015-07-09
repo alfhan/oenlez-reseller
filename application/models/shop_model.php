@@ -16,7 +16,7 @@ class shop_model extends MY_Model {
     	}else{
     		$where = "sesi_id = '{$this->session_id}'";
     	}
-    	$sql = "select tj.*, b.nama barang_nama, b.kode_barang, b.berat
+    	$sql = "select tj.*, b.nama barang_nama, b.kode_barang, b.berat,b.min_pembelian
     	from temp_jual tj 
     	left join barang b on tj.barang_id = b.id
     	where $where";
@@ -29,7 +29,7 @@ class shop_model extends MY_Model {
 		$data = array(
 			'sesi_id' => $this->session_id,
 			'barang_id' => $barang_id,
-			'qty' => 1,
+			'qty' => $barang['min_pembelian'],
 			'harga' => $barang['harga_jual'],
 			'berat' => $barang['berat'],
 			'tanggal' => date("Y-m-d"),
@@ -52,9 +52,15 @@ class shop_model extends MY_Model {
 		$count = count($id);
 		$this->db->trans_begin();
 		for ($i=0; $i < $count; $i++) { 
+			$barang = $this->db->get_where('barang',array('id'=>$_POST['barang_id'][$i]))->row_array();
+			if($_POST['qty'][$i] < $barang['min_pembelian']){
+				$qty = $barang['min_pembelian'];
+			}else{
+				$qty = $_POST['qty'][$i];
+			}
 			$data = array(
 				'barang_id' => $_POST['barang_id'][$i],
-				'qty' => $_POST['qty'][$i],
+				'qty' => $qty,
 				);
 			if($this->session->userdata('tipe') == sha1(md5(MEMBER)) ){
 	    		$data['pelanggan_id'] = $this->session->userdata('id');
@@ -177,7 +183,7 @@ class shop_model extends MY_Model {
 				      <br />
 				      $alamat $kode_pos
 				      <br />
-				      
+				      $provinsi - $kabkota - $kec
 				    </td>
 				    <td valign='top'>
 				      ".nl2br($infoPembayaran['isi'])."
@@ -318,6 +324,21 @@ class shop_model extends MY_Model {
 		left join kecamatan k on s.kecamatan_id = k.id
 		where s.id = '$id'
 		order by tanggal desc";
+		return $this->db->query($sql);
+	}
+	public function content_index($tgl1,$tgl2)
+	{
+		$sql = "select s.*,p.nama pelanggan_nama,p.no_pelanggan,p.alamat pelanggan_alamat, pov.nama provinsi_nama, 
+		kk.nama kabkota_nama,k.nama kecamatan_nama,kur.nama kurir_nama 
+		from shop s 
+		left join pelanggan p on s.pelanggan_id = p.id
+		left join kabkota kk on s.kabkota_id = kk.id
+		left join provinsi pov on s.provinsi_id = pov.id
+		left join kecamatan k on s.kecamatan_id = k.id
+		left join harga_kurir hk on s.harga_kirim_id = hk.id
+		left join kurir kur on hk.kurir_id = kur.id
+		where s.tanggal between '$tgl1' and '$tgl2' and s.status_order = 5
+		order by tanggal asc";
 		return $this->db->query($sql);
 	}
 }

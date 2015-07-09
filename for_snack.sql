@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2015 at 08:57 AM
+-- Generation Time: Jul 09, 2015 at 09:16 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -952,14 +952,7 @@ CREATE TABLE IF NOT EXISTS `pesan` (
   `user_id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `subject` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pesan`
---
-
-INSERT INTO `pesan` (`id`, `pelanggan_id`, `isi`, `tipe`, `updated_at`, `parent_id`, `waktu`, `status`, `user_id`, `email`, `subject`) VALUES
-(8, 4, '#IWC52R\nBank Mandiri\n1440010025887 Taufik Ute Alfan\n36000\n07-07-2015', 'Order Barang', '2015-07-07 14:09:11', 0, '2015-07-07 21:09:11', 0, 0, 'alin@gmail.com', 'Konfirmasi Pembayaran');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1049,15 +1042,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `isi` text NOT NULL,
   `barang_id` int(11) NOT NULL,
   `updated_at` date DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`id`, `email`, `nama`, `isi`, `barang_id`, `updated_at`) VALUES
-(1, 'alfhanz@gmail.com', 'a', 'Gimana?', 10, '2015-06-27'),
-(2, 'alfhanz@gmail.com', 'alfhan', 'Bagaimana apanyta?', 10, '2015-06-27');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1085,23 +1070,6 @@ CREATE TABLE IF NOT EXISTS `shop` (
   `status_order` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `shop`
---
-
-INSERT INTO `shop` (`id`, `tanggal`, `no_invoice`, `provinsi_id`, `kabkota_id`, `kecamatan_id`, `harga_kirim_id`, `harga_kirim`, `total`, `pelanggan_id`, `nama`, `alamat`, `kode_pos`, `hp`, `catatan`, `updated_at`, `status_order`) VALUES
-('07c72e83-276d-4876-8d0a-e0ff3e354781', '2015-07-08', 'LKCJ0Z', 15, 783, 4, 8, '7000', 23400, 10, 'Inneke Kusumaningrum', 'ini alamatku', '65151', '08993484898', '', '2015-07-08 05:31:08', 1),
-('27828797-2bf4-42e1-a770-c0df89967c95', '2015-07-08', 'GF839W', 15, 783, 4, 8, '7000', 7800, 10, 'Yula', 'Tirtomulyo 19 landungsari', '65151', '08993484898', '', '2015-07-08 07:03:51', 1),
-('461c69f1-a99e-4d5c-be8a-78bcc6ea7756', '2015-07-08', 'P9624X', 15, 783, 4, 8, '7000', 18400, 10, 'Taufik Ute Alfan', 'Semolowaru Inda II N14', '', '08993484898', '', '2015-07-08 07:11:33', 1),
-('4f66ebe2-8aa9-458a-b118-80c2dbc54558', '2015-07-08', '4SYXCN', 15, 783, 4, 8, '7000', 0, 10, 'Taufik Ute Alfan', 'Jl. Tirtomulyo No 21 Landungsari RT 01 RW 09', '65151', '08993484898', 'Tanya depan rumah jika tidak ada orang', '2015-07-08 02:47:07', 1),
-('6de7c41f-71bf-4d9e-a9f6-f4f3be464c94', '2015-07-07', 'R60GX3', 15, 807, 13, 2, '5000', 54000, 4, 'Dadang Andy K', 'Semolowaru Indah II N14', '', '08993484898', '', '2015-07-07 14:03:55', 1),
-('855c7764-1c48-498d-993c-d00148dd733e', '2015-07-08', '2531KO', 15, 783, 4, 8, '7000', 15200, 10, 'Taufik Ute Alfan', 'Jl. Tirtomulyo No 21 Landungsari RT 01 RW 09', '65151', '08993484898', 'Tanya depan rumah jika tidak ada orang', '2015-07-08 02:46:01', 1),
-('a4bd9756-8a13-4045-8505-d7ea7f9de455', '2015-07-07', 'IWC52R', 15, 783, 4, 8, '7000', 29000, 4, 'Taufik Ute Alfan', 'Semolowaru Indah II N-14', '', '08993484898', 'Kemasan yang bagus ya', '2015-07-07 14:00:49', 1),
-('ba5d8691-b5f5-4de2-958f-5c3cebff5141', '2015-07-08', '3M14NJ', 15, 783, 4, 8, '7000', 0, 10, 'Inneke Kusumaningrum', 'ini alamatku', '65151', '08993484898', '', '2015-07-08 05:38:13', 1),
-('d8ff8776-5090-404e-983c-0a82af614a39', '2015-07-08', 'XRTI02', 15, 783, 4, 8, '7000', 0, 10, 'Yula', 'Tirtomulyo 19 landungsari', '65151', '08993484898', '', '2015-07-08 07:08:23', 1),
-('eebf7616-222c-4efc-9ea4-3c64454058d7', '2015-07-08', 'N1DR7T', 15, 783, 4, 8, '7000', 0, 10, 'Yula', 'Tirtomulyo 19 landungsari', '65151', '08993484898', '', '2015-07-08 07:05:12', 1),
-('f7e66974-1b40-4381-9c14-ca8c0101c8e2', '2015-07-08', 'CP8WKF', 15, 783, 4, 8, '7000', 0, 10, 'Yula', 'Tirtomulyo 19 landungsari', '65151', '08993484898', '', '2015-07-08 07:05:55', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -1116,19 +1084,6 @@ CREATE TABLE IF NOT EXISTS `shop_detail` (
   `berat` int(11) NOT NULL,
   `harga` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `shop_detail`
---
-
-INSERT INTO `shop_detail` (`id`, `shop_id`, `barang_id`, `qty`, `berat`, `harga`) VALUES
-('07f827e1-4535-4ef1-b65a-c6fba148e7ea', '6de7c41f-71bf-4d9e-a9f6-f4f3be464c94', 10, 12, 80, 4500),
-('8b064c1f-2e53-4a33-8e2a-0e3be3e2a59a', '855c7764-1c48-498d-993c-d00148dd733e', 13, 2, 80, 7600),
-('bb85af86-34d7-40e8-a650-1a5af2e934d4', '07c72e83-276d-4876-8d0a-e0ff3e354781', 12, 3, 80, 7800),
-('bd89b9df-f56d-4e77-af2e-ef6c1f23f717', '27828797-2bf4-42e1-a770-c0df89967c95', 12, 1, 80, 7800),
-('c025b44d-aa46-4946-8e60-3d92b6fdd6e5', 'a4bd9756-8a13-4045-8505-d7ea7f9de455', 13, 2, 80, 7600),
-('ce43701b-6f4e-45b7-8c63-6d931d6999dc', 'a4bd9756-8a13-4045-8505-d7ea7f9de455', 11, 3, 80, 4600),
-('d88fd4cf-fbef-44e9-aeea-e5f24ccca933', '461c69f1-a99e-4d5c-be8a-78bcc6ea7756', 11, 4, 80, 4600);
 
 -- --------------------------------------------------------
 
@@ -1299,7 +1254,7 @@ CREATE TABLE IF NOT EXISTS `temp_jual` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tanggal` date NOT NULL,
   `berat` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -1528,7 +1483,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- AUTO_INCREMENT for table `pesan`
 --
 ALTER TABLE `pesan`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `provinsi`
 --
@@ -1538,7 +1493,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `slide_show`
 --
@@ -1568,7 +1523,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 -- AUTO_INCREMENT for table `temp_jual`
 --
 ALTER TABLE `temp_jual`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

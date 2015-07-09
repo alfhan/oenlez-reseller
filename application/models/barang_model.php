@@ -99,6 +99,7 @@ class barang_model extends MY_Model {
 			'foto' => "$foto.jpg",
 			'keterangan' => $this->input->post('keterangan'),
 			'kategori_barang_id' => $this->input->post('kategori_barang_id'),
+			'min_pembelian' => $this->input->post('min_pembelian'),
 			);
 		if(!$foto){
 			unset($data['foto']);

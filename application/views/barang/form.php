@@ -48,8 +48,12 @@
 		                </div>
 		                <div class="form-group">
 		                    <label for="nama" class="col-sm-3 control-label">Nama</label>
-		                    <div class="col-sm-8">
+		                    <div class="col-sm-4">
 		                        <input name="nama" id="nama" class="form-control input-sm" value="<?=@$data['nama']?>" required />
+		                    </div>
+		                    <label for="min_pembelian" class="col-sm-3 control-label">Minimal Pembelian</label>
+		                    <div class="col-sm-1">
+		                        <input name="min_pembelian" id="min_pembelian" value="<?=@$data['min_pembelian']?>" class="form-control input-sm" required />
 		                    </div>
 		                </div>
 		                <div class="form-group">

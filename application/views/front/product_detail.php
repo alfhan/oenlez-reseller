@@ -83,7 +83,7 @@
                                 </span>
                                 <p><b>Availability:</b> <?=$data['ready_stock'] == 1 ? "In Stock":"Out of Stock"?></p>
                                 <p><b>Weight:</b> <?=$data['berat']?> <small>gr</small></p>
-                                <p><b>Brand:</b> Oenlez</p>
+                                <p><b>Min Pembelian:</b> <?=$data['min_pembelian']?> Item</p>
                                 <!-- <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
                             </div><!--/product-information-->
                         </div>

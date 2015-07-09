@@ -50,7 +50,7 @@ $(document).ready(function(){
 	        success:function(r){
 	          berforeSendLoading.modal('hide');
 	          successDialog.modal('show');
-	          // window.open("<?=base_url('barang')?>","_self");
+	          window.open("<?=base_url('barang')?>","_self");
 	        },
 	        error:function(r){
 	          berforeSendLoading.modal('hide');
