@@ -74,8 +74,8 @@
                                 <!-- <img src="images/product-details/rating.png" alt="" /> -->
                                 <span>
                                     <span>Rp <?=$data['harga_jual']?></span>
-                                    <label>Quantity:</label>
-                                    <input type="text" value="1" name="qty" />
+                                    <!--<label>Quantity:</label>
+                                    <input type="text" value="1" name="qty" />-->
                                     <button type="button" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Add to cart

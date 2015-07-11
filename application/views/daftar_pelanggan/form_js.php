@@ -25,7 +25,7 @@
           title: "ERROR. . .",
           message: "<div class='alert alert-danger alert-dismissable'>"+
                         "<i class='fa fa-ban'></i>"+
-                        "<b>Alert!</b> Error, terjadi kesalahan pada server. hubungi admin aplikasi"+
+                        "<b>Alert!</b> Warning,  Kemungkinan Username Anda Sudah Digunakan"+
                     "</div>",
           closeButton: true,
           show: false,

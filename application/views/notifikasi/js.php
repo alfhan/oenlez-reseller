@@ -65,7 +65,7 @@ $(document).ready(function(){
             	success:function(r){
               berforeSendLoading.modal('hide');
               successDialog.modal('show');
-              //window.open("<?php echo base_url($link);?>","_self");
+              window.open("<?php echo base_url($link);?>","_self");
             },
             error:function(r){
               berforeSendLoading.modal('hide');

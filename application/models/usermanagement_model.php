@@ -69,8 +69,9 @@ class usermanagement_model extends MY_Model {
 			$old_file = $this->input->post('old_file');
 			unlink($data_foto['file_path'].$old_file);
 		}
-		if(empty($this->input->post('password')))
+		if(empty($_POST['password'])){
 			unset($data['password']);
+		}
 		$id = $this->input->post('id');
 		if(empty($id)){
 			$data['username'] = $this->input->post('username');

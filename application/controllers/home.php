@@ -77,7 +77,8 @@ class home extends CI_Controller {
 	{
 		$x = $this->db->get_where('pelanggan',(array('username'=>$_POST['email'])));
 		if($x->num_rows() > 0){
-			echo "<script>alert('Data Sudah Ada')</script>";
+			echo "<script>alert('Data Sudah Ada');window.open('".site_url('blog/login')."','_self');</script>";
+			// echo json_encode(array('msg'=>'Data Sudah Ada'));
 			#redirect(site_url('blog/login'));
 		}else{
 			$this->load->model('pelanggan_model');
@@ -85,8 +86,12 @@ class home extends CI_Controller {
 			$_POST['no_pelanggan'] = 'CUST-'.generateRandomString();
 			$_POST['username'] = $_POST['email'];
 			unset($_POST['email']);
-			$this->pelanggan_model->simpan('pelanggan');
-			redirect(site_url('home/my_account'));
+			$ret = $this->pelanggan_model->simpanData('pelanggan');
+			if($ret === false){
+				echo "<script>alert('Telah terjadi kesalahan, harap ulangi kembali');window.open('".site_url('blog/login')."','_self');</script>";
+			}else{
+				echo "<script>alert('Pedaftaran berhasil, silahkan login sesuai username dan password anda!');window.open('".site_url('blog/login')."','_self');</script>";
+			}
 		}
 	}
 	public function login_member()

@@ -4,7 +4,7 @@
 ?>
 <body>
 <!-- SDK Facebook-->
-	<div id="fb-root"></div>
+<!--	<div id="fb-root"></div>
 	<script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -22,6 +22,7 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
+-->
 <!-- End Sdk Facebook -->
     <?php $this->load->view('front/nav');?>
     <section>
@@ -85,7 +86,7 @@
                                 if(!$detail){
                             ?> &nbsp; <a href="<?=site_url('blog/detail/'.$r['id']);?>" class="btn btn-xs btn-info"><i class="fa fa-file-o">&nbsp;Read More</i></a>
                             <?php }else{ ?>
-                            	<div class="fb-share-button" data-href="<?=site_url('blog/detail/'.$r['id']);?>" data-layout="button"></div>
+                            	<!-- <div class="fb-share-button" data-href="<?=site_url('blog/detail/'.$r['id']);?>" data-layout="button"></div> -->
                             <?php } ?>
                             </p>
                         </div>

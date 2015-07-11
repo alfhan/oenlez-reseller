@@ -14,7 +14,7 @@
 				</div>
 				<div class="box-body">
 					<form class="cmxform form-horizontal tasi-form" role="form" id="myForm">
-		                <input type="hidden" name="id" id="id" value="<?=@$data['id']?>" />
+		                <input type="hidden" name="id" id="id" value="<?=@$r['id']?>" />
 		                <div class="form-group">
 		                	<label class="col-md-3 control-label">Kode Pelanggan</label>
 		                	<div class="col-md-3">

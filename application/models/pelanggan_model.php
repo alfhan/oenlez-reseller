@@ -69,4 +69,22 @@ class pelanggan_model extends MY_Model {
 			return $uniqid;
 		}
 	}
+	public function simpanData($table)
+	{
+		$this->db->trans_begin();
+		if(isset($_POST['id']) and !empty($_POST['id'])){
+			$this->db->where('id', $_POST['id']);
+			$return = $this->db->update($table, $_POST);
+		}else{
+			$return = $this->db->insert($table, $_POST);
+		}
+		#$this->db->trans_start();
+		if ($this->db->trans_status() === FALSE){
+			$this->db->trans_rollback();
+			return true;
+		}else{
+			$this->db->trans_commit();
+			return false;
+		}
+	}
 }
