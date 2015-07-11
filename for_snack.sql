@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2015 at 09:16 AM
+-- Generation Time: Jul 11, 2015 at 02:33 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -36,19 +36,19 @@ CREATE TABLE IF NOT EXISTS `artikel` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `is_aktif` tinyint(1) NOT NULL DEFAULT '1',
   `kategori_artikel_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `artikel`
 --
 
 INSERT INTO `artikel` (`id`, `judul`, `isi`, `foto`, `user_id`, `tanggal`, `updated_at`, `is_aktif`, `kategori_artikel_id`) VALUES
-(1, 'Pay To', '<b>Bank Mandiri</b><br>1440010025887 Taufik Ute Alfan', '', 1, '2015-07-07', '2015-07-07 14:20:31', 1, 9),
+(1, 'Pay To', '<h3><b>Daftar Transfer</b></h3><b>Bank Mandiri</b><br>1440010025887 Taufik Ute Alfan<br><br><b>Bank BCA</b><br>1440010025887 Taufik Ute Alfan<br><br>', '', 1, '2015-07-07', '2015-07-10 21:30:52', 1, 1),
 (2, 'About Us', 'sdasrf', '558bfd9c3e8e1.jpg', 1, '2015-06-25', '2015-06-25 13:25:54', 1, 9),
 (3, 'Contact Us', '<p><b>Oenlez (O Enak Lezat).</b></p><p>935 W. Webster Ave New Streets Chicago, IL 60614, NY</p><p>Surabaya - Jawa Timur, Indonesia</p><p>Mobile: +62 899 348 4898</p><p>Fax: 1-714-252-0026</p><p>Email: oenlezsnack@gmail.com</p>', '', 1, '2015-06-25', '2015-07-06 13:59:57', 1, 1),
-(4, 'FAQ''s', '', '', 1, '2015-06-25', '2015-06-25 13:26:50', 1, 9),
+(4, 'FAQ''s', '<h3><b>Berikut ini adalah dafar pertanyaan yang mungkin sering muncul</b></h3><ul><li>Apakah bebas MSG</li><ul><li>Ya</li></ul><li>Apakah saya perlu login dan register untuk berbelanja disini</li><ul><li>Ya</li></ul><li>Apakah bisa mentransfer dari bank lain?</li><ul><li>Bisa, asalkan bank tujuannya adalah bank kami</li></ul><li>Kapan barang akan dikirim?</li><ul><li>Setelah konfirmasi pembayaran dan check, kami akan melakukan pengemasan barang yang dilanjutkan dengan mengirim ke bagian pengiriman</li></ul><li>Kemana saja barang akan dikirim</li><ul><li>Kemana saja asal sesuai dengan data kami dan jasa kurir kami</li></ul><li>Berapa lama akan sampai di tempat?</li><ul><li>Kami menyediakan beberapa paket pegiriman, sesuaikan dengan kebutuhan anda. lama pengiriman tergantung jasa kurir yang anda gunakan</li></ul></ul>', '', 1, '2015-06-25', '2015-07-10 21:29:22', 1, 1),
 (5, 'Term Of Use', '', '', 1, '2015-06-25', '2015-06-25 13:27:59', 1, 1),
-(6, 'Aturan & Cara Pembelian', '', '', 1, '2015-06-25', '2015-06-25 13:30:05', 1, 1),
+(6, 'Aturan & Cara Pembelian', '<ol><li>Pilih produk yang anda suka</li><li>Minimum pembelian tertera di setiap item produk</li><li>Klik add to cart untuk mulai membeli</li><li>Update keranjang belanja jika ingin mengubah quantity pembelian, dan klik belanja lagi jika ingin belanja produk lain</li><li>Klik Checkout untuk menyelesaikan belanja dan isi data pengiriman belanja</li><li>Anda akan mendapatkan notifikasi email sesuai dengan username&nbsp;</li><li>Silahkan transfer sesuai dengan daftar transfer</li><li>Login ke akun anda dan lakukan konfirmasi pembayaran terhadap barang yang anda beli di my account &gt; history belanja</li><li>Klik detail invoice yang anda transfer, kemudian klik konfirmasi dan isi konfirmasi tentang transfer Contoh: Taufik Ute Alfan# Bank Mandiri# 125.000# 11 Juli 2015# No Invoice #NSA021</li></ol>', '', 1, '2015-06-25', '2015-07-10 21:23:05', 1, 1),
 (7, 'Company Information', '', '', 1, '2015-06-25', '2015-06-25 13:30:45', 1, 9),
 (8, 'GIRLS PINK T SHIRT ARRIVED IN STORE', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p><br><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p><br><p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p><br><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>', '558e2ce8d70ea.jpg', 1, '2015-06-27', '2015-06-27 04:56:09', 1, 1),
 (9, 'EXTJS', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '558e37288a090.jpg', 1, '2015-06-27', '2015-06-27 05:40:34', 1, 1);
@@ -73,9 +73,9 @@ CREATE TABLE IF NOT EXISTS `banner` (
 
 INSERT INTO `banner` (`id`, `is_aktif`, `foto`, `updated_at`, `posisi`) VALUES
 (1, 1, '558da9873989e.jpg', '2015-06-27 03:54:52', 1),
-(2, 1, '558daa8de095d.jpg', '2015-06-26 19:39:58', 0),
+(2, 0, '558daa8de095d.jpg', '2015-07-10 09:40:48', 0),
 (3, 0, '558daa5532318.jpg', '2015-06-27 03:53:31', 0),
-(4, 0, '558da866b89fc.jpg', '2015-06-27 03:53:35', 0);
+(4, 1, '558da866b89fc.jpg', '2015-07-10 09:40:53', 0);
 
 -- --------------------------------------------------------
 
@@ -101,18 +101,19 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `recomended_item` tinyint(4) NOT NULL,
   `ready_stock` tinyint(4) NOT NULL,
   `berat` decimal(10,0) NOT NULL,
-  `foto2` varchar(100) NOT NULL
+  `foto2` varchar(100) NOT NULL,
+  `min_pembelian` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id`, `kode_barang`, `kode_barcode`, `nama`, `kategori_barang_id`, `qty`, `harga_jual`, `harga_beli`, `foto`, `created_date`, `modified_date`, `created_by`, `modified_by`, `keterangan`, `recomended_item`, `ready_stock`, `berat`, `foto2`) VALUES
-(10, 'B0004', 'T0005', 'Mix', 2, 18, 4500, 5000, '559a87fc245e7.jpg', NULL, NULL, NULL, NULL, '<b>Barbeque </b>With Black Papper<br>Cassataro Chips <b>Gluten FreeMSG<br></b><br><b>Komposisi :</b><br>Singkong, Talas, Tomat, Paprika,<br>Bawang Bombay, Bawang Putih, Kedelai,<br>Merica Hitam, Gula, Garam,<br>Minyak Kelapa Sawit', 1, 1, '80', ''),
-(11, 'B0003', 'T0004', 'Cheezy', 1, 6, 4600, 5500, '559a8792651cd.jpg', NULL, NULL, NULL, NULL, '<b>Cheese,&nbsp;</b>Real Cheese Flavour<br>Cassava Chips <b>Gluten Free MSG<br><br>Komposisi:<br></b>Singkong, Keju Cheddar, Susu,&nbsp;<br>Bawang Putih, Tepung Mocaf, Gula,<br>Garam, Minyak Kelapa Sawit', 1, 1, '80', ''),
-(12, 'B0002', 'T0003', 'Palm Soy', 1, 6, 7800, 9000, '559a8756c62b0.jpg', NULL, NULL, NULL, NULL, '<b>Palm Soy&nbsp;</b>Classic Sweet Flavour<br>Cassava Chips <b>Gluten Free MSG<br><br>Komposisi:<br></b>Singkong, Gula Aren Organik, Kedelai,<br>Susu, Bawang Putih, Garam, Tepung<br>Mocaf, Minyak Kelapa Sawit', 1, 1, '80', ''),
-(13, 'B0001', 'T0002', 'Crazy Chili', 1, 13, 7600, 9500, '559a86de53129.jpg', NULL, NULL, NULL, NULL, 'Keripik Singkon<b>&nbsp;Gluten Free MSG,&nbsp;</b><br><b>Crazy Chili </b>Unique Spicy Flavour.<br><br><b>Komposisi:<br></b>Singkong, Paprika, Cabai, <br>Bawang Putih, Lada, Kedelai, <br>Tepung Mocaf, Gula, Garam, <br>Minyak Kelapa Sawit, Daun Jeruk Purut<b><br></b>', 1, 1, '80', '');
+INSERT INTO `barang` (`id`, `kode_barang`, `kode_barcode`, `nama`, `kategori_barang_id`, `qty`, `harga_jual`, `harga_beli`, `foto`, `created_date`, `modified_date`, `created_by`, `modified_by`, `keterangan`, `recomended_item`, `ready_stock`, `berat`, `foto2`, `min_pembelian`) VALUES
+(10, 'B0004', 'T0005', 'Mix', 2, 18, 4500, 5000, '559a87fc245e7.jpg', NULL, NULL, NULL, NULL, '<b>Barbeque </b>With Black Papper<br>Cassataro Chips <b>Gluten FreeMSG<br></b><br><b>Komposisi :</b><br>Singkong, Talas, Tomat, Paprika,<br>Bawang Bombay, Bawang Putih, Kedelai,<br>Merica Hitam, Gula, Garam,<br>Minyak Kelapa Sawit', 1, 1, '80', '', 12),
+(11, 'B0003', 'T0004', 'Cheezy', 1, 6, 4600, 5500, '559a8792651cd.jpg', NULL, NULL, NULL, NULL, '<b>Cheese,&nbsp;</b>Real Cheese Flavour<br>Cassava Chips <b>Gluten Free MSG<br><br>Komposisi:<br></b>Singkong, Keju Cheddar, Susu,&nbsp;<br>Bawang Putih, Tepung Mocaf, Gula,<br>Garam, Minyak Kelapa Sawit', 1, 1, '80', '', 12),
+(12, 'B0002', 'T0003', 'Palm Soy', 1, 6, 7800, 9000, '559a8756c62b0.jpg', NULL, NULL, NULL, NULL, '<b>Palm Soy&nbsp;</b>Classic Sweet Flavour<br>Cassava Chips <b>Gluten Free MSG<br><br>Komposisi:<br></b>Singkong, Gula Aren Organik, Kedelai,<br>Susu, Bawang Putih, Garam, Tepung<br>Mocaf, Minyak Kelapa Sawit', 1, 1, '80', '', 12),
+(13, 'B0001', 'T0002', 'Crazy Chili', 1, 13, 7600, 9500, '559a86de53129.jpg', NULL, NULL, NULL, NULL, 'Keripik Singkon<b>&nbsp;Gluten Free MSG,&nbsp;</b><br><b>Crazy Chili </b>Unique Spicy Flavour.<br><br><b>Komposisi:<br></b>Singkong, Paprika, Cabai, <br>Bawang Putih, Lada, Kedelai, <br>Tepung Mocaf, Gula, Garam, <br>Minyak Kelapa Sawit, Daun Jeruk Purut<b><br></b>', 1, 1, '12', '', 12);
 
 -- --------------------------------------------------------
 
@@ -795,7 +796,6 @@ CREATE TABLE IF NOT EXISTS `kategori_artikel` (
 
 INSERT INTO `kategori_artikel` (`id`, `nama`) VALUES
 (1, 'Berita'),
-(2, 'Olahraga'),
 (3, 'Kesehatan'),
 (9, 'Profil Web');
 
@@ -808,7 +808,7 @@ INSERT INTO `kategori_artikel` (`id`, `nama`) VALUES
 CREATE TABLE IF NOT EXISTS `kategori_barang` (
 `id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kategori_barang`
@@ -917,22 +917,15 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
   `password` varchar(100) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `is_new` tinyint(4) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelanggan`
 --
 
 INSERT INTO `pelanggan` (`id`, `no_pelanggan`, `nama`, `alamat`, `kab_kota`, `kode_pos`, `hp`, `updated_at`, `aktif`, `username`, `password`, `foto`, `is_new`) VALUES
-(2, 'CUST-01', 'Taufi Ute Alfan', 'Jl. Semolowaru Indah II N-14', 'Surabaya', 610928, '08993484898', '2015-06-22 15:16:30', 0, 'alfhanz@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '', 1),
-(3, 'CUST-13SR', 'alfhan', 'Semolowaru Indah II', 'Kota Surabaya', 65151, '08993484898', '2015-06-28 06:58:19', 0, 'alfhan@yahoo.co.id', '256a19077d749fe5bdbaeaedb4283b5eda80b7bc', '558f9b0b6b1e2.jpg', 1),
-(4, 'CUST-6H5O', 'Inneke Kusumaningrum', '', '', 0, '', '2015-06-30 13:34:02', 0, 'alin@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '', 1),
-(5, 'CUST-3GH8', 'rajendra alfin prawira', '', '', 0, '', '2015-06-30 13:38:03', 0, 'rajendra@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '', 1),
-(6, 'CUST-6BEU', 'iyul', '', '', 0, '', '2015-06-30 13:39:43', 0, 'iyul@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '', 1),
-(7, 'CUST-H04E', 'SUharno', '', '', 0, '', '2015-06-30 13:42:10', 0, 'suhar@gmail.com', 'adc8aeff5947c9b0c2805d2979e36205172e4a29', '', 1),
-(8, 'CUST-TBOR', 'suhat', '', '', 0, '', '2015-06-30 13:44:31', 0, 'sukkata@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '', 1),
-(9, 'CUST-13SR', 'alfhan', 'Semolowaru Indah II', 'Kota Surabaya', 65151, '08993484898', '2015-07-08 02:42:49', 0, 'alfhan@yahoo.co.id', '86266ee937d97f812a8e57d22b62ee29', '', 1),
-(10, 'CUST-13SR', 'alfhan', 'Semolowaru Indah II', 'Kota Surabaya', 65151, '08993484898', '2015-07-08 02:44:03', 0, 'alfhan@yahoo.co.id', '9ed85afdd4852dd1001b47ffd6db8061f45bf94d', '', 1);
+(11, 'CUST-001', 'Taufik Ute Alfan', 'Jl. Semolowaru Indah II N-14', 'Surabaya', 610928, '08993484898', '2015-07-10 07:59:20', 0, 'alfhanz@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '', 1),
+(12, 'CUST-TOMG', 'inneke', '', '', 0, '', '2015-07-11 12:15:40', 0, 'kusumaningrum.inneke@gmail.com', '5e8e5e91c1bc68d05ad079b9b3632a9e6641c64a', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1117,16 +1110,14 @@ INSERT INTO `slide_show` (`id`, `foto`, `keterangan`, `updated_at`, `judul`) VAL
 CREATE TABLE IF NOT EXISTS `sys_group` (
 `id` int(11) NOT NULL,
   `nama` varchar(35) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sys_group`
 --
 
 INSERT INTO `sys_group` (`id`, `nama`) VALUES
-(1, 'ADMIN'),
-(2, 'KASIR'),
-(3, 'BARANG');
+(1, 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -1158,7 +1149,7 @@ INSERT INTO `sys_menu` (`id`, `parent_id`, `nama`, `url`, `icon`, `urutan`, `lev
 (7, 1, 'Daftar Produk', 'barang', NULL, 4, 2),
 (8, 5, 'Daftar Penjualan', 'daftar_penjualan', NULL, 2, 2),
 (9, 0, 'Article Management', '#', 'fa fa-file-o', 3, 1),
-(10, 5, 'Rekap Penjualan', 'rekap_penjualan', NULL, 3, 2),
+(10, 5, 'Rekap Penjualan', 'rekap', NULL, 3, 2),
 (11, 5, 'Notifikasi', 'notifikasi', NULL, 4, 2),
 (12, 9, 'Kategori Artikel', 'kategori_artikel', NULL, 1, 2),
 (13, 1, 'Profil Usaha', 'profil', NULL, 2, 2),
@@ -1186,16 +1177,14 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
   `hp` varchar(15) DEFAULT NULL,
   `pegawai_id` varchar(40) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sys_user`
 --
 
 INSERT INTO `sys_user` (`id`, `username`, `password`, `nama`, `group_id`, `email`, `telp`, `hp`, `pegawai_id`, `foto`) VALUES
-(1, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Administrator', 1, 'alfhan@yahoo.co.id', '', '08993484898', NULL, '8b3fa3bfbc79f7cc1a626a7a68e612a8.jpg'),
-(2, 'kasir', '21232f297a57a5a743894a0e4a801fc3', 'Kasir 1', 2, NULL, NULL, NULL, NULL, NULL),
-(4, 'riyanti', 'fe4851a308daf8705b0fdc130a34dc07', 'Riyanti Ahmad', 3, '', '', '', NULL, '60bd6c447c8e38229bab9b55f68a428b.jpg');
+(1, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Administrator', 1, 'alfhan@yahoo.co.id', '', '08993484898', NULL, '8b3fa3bfbc79f7cc1a626a7a68e612a8.jpg');
 
 -- --------------------------------------------------------
 
@@ -1223,7 +1212,7 @@ INSERT INTO `sys_user_group` (`id`, `menu_id`, `group_id`) VALUES
 (7, 7, 1),
 (8, 8, 1),
 (9, 9, 1),
-(10, 10, NULL),
+(10, 10, 1),
 (11, 11, 1),
 (12, 14, 1),
 (13, 15, NULL),
@@ -1254,7 +1243,14 @@ CREATE TABLE IF NOT EXISTS `temp_jual` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tanggal` date NOT NULL,
   `berat` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `temp_jual`
+--
+
+INSERT INTO `temp_jual` (`id`, `sesi_id`, `barang_id`, `qty`, `harga`, `pelanggan_id`, `updated_at`, `tanggal`, `berat`) VALUES
+(5, '9ce5a821234b1ab782670896f08c294c', 10, 12, 4500, 3, '2015-07-09 12:38:50', '2015-07-09', 80);
 
 --
 -- Indexes for dumped tables
@@ -1336,7 +1332,7 @@ ALTER TABLE `kurir`
 -- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`username`), ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `pesan`
@@ -1418,7 +1414,7 @@ ALTER TABLE `temp_jual`
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `banner`
 --
@@ -1458,7 +1454,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT for table `kategori_barang`
 --
 ALTER TABLE `kategori_barang`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `kategori_umum`
 --
@@ -1478,7 +1474,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `pesan`
 --
@@ -1503,7 +1499,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `sys_group`
 --
 ALTER TABLE `sys_group`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sys_menu`
 --
@@ -1513,7 +1509,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 -- AUTO_INCREMENT for table `sys_user`
 --
 ALTER TABLE `sys_user`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sys_user_group`
 --
@@ -1523,7 +1519,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 -- AUTO_INCREMENT for table `temp_jual`
 --
 ALTER TABLE `temp_jual`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
