@@ -226,25 +226,19 @@ class shop_model extends MY_Model {
 		</html>
 		";
 		$subject = "New Order #$no_invoice";
-		/*$config = array(
-			'protocol'=>'smtp',
-			'smtp_host'=>'ssl://smtp.gmail.com',
-			'smtp_post'=>465,
-			'smtp_user'=>'alfhanz@gmail.com',
-			'smtp_pass'=>'010988alfhan',
-			'mail_type'=>'html',
-			'charset'=>'utf-8',
-			'newline'=>"\r\n",
-			'wordwrap'=>TRUE
-			);
-		$this->load->library('email');
-		$this->email->initialize($config);
-		$this->email->from('sales@oenlez.com','Oenlez Sales');
-		$this->email->to($to);
-		$this->email->subject($subject);
-		$this->email->message($message);
-		$this->email->send();*/
+		$e = $this->db->get_where('email_setting',array('id'=>1))->row_array();
 		$config = Array(
+	      'protocol' => $e['protocol'],
+	      'smtp_host' => $e['host'],
+	      'smtp_port' => $e['port'],
+	      'smtp_user' => $e['user'],
+	      'smtp_pass' => $e['pass'],
+	      'mailtype' => $e['mailtype'],
+	      'charset' => 'utf-8',
+	      'newline' => "\r\n",
+	      'wordwrap' => TRUE
+	    );
+	    /*$config = Array(
 	      'protocol' => 'smtp',
 	      'smtp_host' => 'ssl://smtp.gmail.com',
 	      'smtp_port' => 465,
@@ -254,11 +248,11 @@ class shop_model extends MY_Model {
 	      'charset' => 'utf-8',
 	      'newline' => "\r\n",
 	      'wordwrap' => TRUE
-	    );
+	    );*/
 		$this->load->library('email');
 		$this->email->initialize($config);
 		
-		$this->email->from('sales@oenlez.com', 'Oenlez Sales');
+		$this->email->from($e['mailfrom'], $e['fromnamer']);
 		$this->email->to($to); 
 
 		$this->email->subject($subject);

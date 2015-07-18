@@ -85,6 +85,69 @@
                     <center><img src="<?=FILE_PERUSAHAAN . $data->foto?>"></center>
                 </div>
             </div>
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Email Setting</h3>
+                </div>
+                <div class="box-body">
+                    <form id="frmemail">
+                        <input type="hidden" value="<?=$es['id']?>" name="id" />
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Protocol</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" name="protocol" value="<?=$es['protocol']?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Host</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" name="host" value="<?=$es['host']?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Port</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" name="port" value="<?=$es['port']?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">User Email</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" name="user" value="<?=$es['user']?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">User Pass</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" type="password" name="pass" value="<?=$es['pass']?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Mail Type</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" name="mailtype" value="<?=$es['mailtype']?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Mail From</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" name="mailfrom" value="<?=$es['mailfrom']?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">From Name</label>
+                            <div class="col-md-9">
+                                <input class="input-sm form-control" name="fromnamer" value="<?=$es['fromnamer']?>" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="box-footer">
+                    <button type="button" onclick="saveEmailSettingClick()" class="btn btn-primary btn-sm">
+                    <i class="fa fa-save"></i> Simpan
+                    </button>
+                </div>
+            </div>
         </div>
 	</div>
 </section>

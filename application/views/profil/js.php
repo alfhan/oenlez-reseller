@@ -25,7 +25,7 @@
           title: "ERROR. . .",
           message: "<div class='alert alert-danger alert-dismissable'>"+
                         "<i class='fa fa-ban'></i>"+
-                        "<b>Alert!</b> Error, terjadi kesalahan pada server. hubungi admin aplikasi"+
+                        "<b>Alert!</b> Error, terjadi kesalahan pada server. coba ulangi"+
                     "</div>",
           closeButton: true,
           show: false,
@@ -33,6 +33,25 @@
     function saveClick(){
         $('#myForm').ajaxSubmit({
             url:'<?php echo $urlSave;?>',
+            type:'POST',
+            beforeSend:function(r){
+              berforeSendLoading.modal('show');
+            },
+            success:function(r){
+              berforeSendLoading.modal('hide');
+              successDialog.modal('show');
+            },
+            error:function(r){
+              berforeSendLoading.modal('hide');
+              errorDialog.modal('show');
+            },
+        }).data('jqxhr').done(function(r){
+            
+        });
+    }
+    function saveEmailSettingClick(){
+        $('#frmemail').ajaxSubmit({
+            url:'<?php echo $urlEmailSave;?>',
             type:'POST',
             beforeSend:function(r){
               berforeSendLoading.modal('show');

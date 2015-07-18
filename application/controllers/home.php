@@ -107,7 +107,7 @@ class home extends CI_Controller {
 				$data = array(
 					'login'				=> false,
 					'id'				=> $row['id'],
-					'username'			=> $row['email'],
+					'username'			=> $row['username'],
 					'nama'				=> $row['nama'],
 					'tipe'				=> sha1(md5(MEMBER)),
 				);
@@ -205,7 +205,20 @@ class home extends CI_Controller {
 	}
 	public function coba($value='')
 	{
+		$e = $this->db->get_where('email_setting',array('id'=>1))->row_array();
 		$config = Array(
+	      'protocol' => $e['protocol'],
+	      // 'smtp_host' => 'ssl://smtp.gmail.com',
+	      'smtp_host' => $e['host'],
+	      'smtp_port' => $e['port'],
+	      'smtp_user' => $e['user'], //isi dengan gmailmu!
+	      'smtp_pass' => $r['pass'], //isi dengan password gmailmu!
+	      'mailtype' => 'html',
+	      'charset' => 'utf-8',
+	      'newline' => "\r\n",
+	      'wordwrap' => TRUE
+	    );
+	    /*$config = Array(
 	      'protocol' => 'smtp',
 	      // 'smtp_host' => 'ssl://smtp.gmail.com',
 	      'smtp_host' => 'ssl://leios.rapidplex.com',
@@ -216,11 +229,11 @@ class home extends CI_Controller {
 	      'charset' => 'utf-8',
 	      'newline' => "\r\n",
 	      'wordwrap' => TRUE
-	    );
+	    );*/
 		$this->load->library('email');
 		$this->email->initialize($config);
 		
-		$this->email->from('sales@oenlez.com', 'Oenlez Sales');
+		$this->email->from($e['mailfrom'], $e['fromnamer']);
 		$this->email->to('alfhan@yahoo.co.id'); 
 
 		$this->email->subject('New Order');

@@ -10,6 +10,10 @@ class profil_model extends MY_Model {
 		$result = $this->db->get($this->table);
 		return $result->row();
 	}
+	public function email_setting($value='')
+	{
+		return $this->db->get_where('email_setting',array('id'=>1))->row_array();
+	}
 	public function profil_save(){
 		/*$config['upload_path'] = './'.FILE_PERUSAHAAN;
 		$config['allowed_types'] = 'gif|jpg|png';

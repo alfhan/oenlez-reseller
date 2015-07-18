@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2015 at 02:33 PM
+-- Generation Time: Jul 18, 2015 at 11:31 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -169,6 +169,34 @@ INSERT INTO `barang_masuk` (`id`, `barang_id`, `tanggal`, `qty_awal`, `qty_masuk
 (21, 14, '2015-02-02', 3, 2, 5, '3500000.00', '100000.00', '3000000.00', '83000.00', NULL, NULL, NULL, NULL, NULL, 'jaknot', '#uwe'),
 (22, 22, '2015-02-02', 12, 2, 14, '25000.00', '35000.00', '35000.00', '25000.00', NULL, NULL, NULL, NULL, NULL, 't-code', 'wqehk'),
 (23, 21, '2015-02-02', 3, 2, 5, '80000.00', '90000.00', '90000.00', '80000.00', NULL, NULL, NULL, NULL, NULL, 'adjk', 'ljflefj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_setting`
+--
+
+CREATE TABLE IF NOT EXISTS `email_setting` (
+  `id` int(11) NOT NULL,
+  `protocol` varchar(100) NOT NULL,
+  `host` varchar(100) NOT NULL,
+  `port` int(11) NOT NULL DEFAULT '465',
+  `user` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `mailtype` varchar(100) NOT NULL DEFAULT 'html',
+  `charset` varchar(100) NOT NULL DEFAULT 'utf-8',
+  `newline` varchar(100) NOT NULL DEFAULT '\\r\\n',
+  `wordwrap` tinyint(1) NOT NULL,
+  `mailfrom` varchar(100) NOT NULL,
+  `fromnamer` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `email_setting`
+--
+
+INSERT INTO `email_setting` (`id`, `protocol`, `host`, `port`, `user`, `pass`, `mailtype`, `charset`, `newline`, `wordwrap`, `mailfrom`, `fromnamer`) VALUES
+(1, 'smtp', 'ssl://smtp.gmail.com', 465, 'alfhanz@gmail.com', '010988alfhan', 'html', 'utf-8', '\\r\\n', 1, 'oenlez@gmail.com', 'OEnakLezat');
 
 -- --------------------------------------------------------
 
@@ -917,7 +945,7 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
   `password` varchar(100) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `is_new` tinyint(4) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelanggan`
@@ -1281,6 +1309,12 @@ ALTER TABLE `barang_masuk`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `email_setting`
+--
+ALTER TABLE `email_setting`
+ ADD PRIMARY KEY (`user`);
+
+--
 -- Indexes for table `harga_kurir`
 --
 ALTER TABLE `harga_kurir`
@@ -1474,7 +1508,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `pesan`
 --
