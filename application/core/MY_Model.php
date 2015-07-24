@@ -191,5 +191,30 @@ class MY_Model extends CI_Model {
 	{
 		return $this->db->get($table);
 	}
+	public function defaultDataTable($table,$column)
+	{
+		$sql = "select * from $table ";
+		$data['recordsTotal'] = $this->db->query($sql)->num_rows();
+		$data['draw'] = $_GET['draw'];
+		if(!empty($_GET['search']['value'])){
+			$q = $_GET['search']['value'];
+			$sql .= " where $column like '%$q%'";
+		}
+		$data['recordsFiltered'] = $this->db->query($sql)->num_rows();
+		$limit = self::limit( $_GET);
+		$sql .= " $limit ";
+		$data['data'] = $this->db->query($sql)->result_array();
+		echo json_encode($data);
+	}
+	static function limit ( $request)
+	{
+		$limit = '';
+
+		if ( isset($request['start']) && $request['length'] != -1 ) {
+			$limit = "LIMIT ".intval($request['start']).", ".intval($request['length']);
+		}
+
+		return $limit;
+	}
 }
 ?>
