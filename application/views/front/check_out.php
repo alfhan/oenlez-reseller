@@ -22,8 +22,8 @@
                   </tr>
                   <tr>
                     <td>Nama Penerima</td>
-                    <td colspan="2"><input name="nama" id="nama" class="form-control input-sm"></td>
-                    <td>Jasa Kurir</td>
+                    <td colspan="5"><input name="nama" id="nama" class="form-control input-sm"></td>
+                    <!-- <td>Jasa Kurir</td>
                     <td>
                     <select class="form-control input-sm" name="kurir_id" id="kurir_id">
                       <?php
@@ -36,7 +36,13 @@
                     <td>
                       <input name="harga_kirim" id="harga_kirim" readonly class="form-control input-sm">
                       <input name="harga_kirim_id" id="harga_kirim_id" type="hidden" class="form-control input-sm">
-                    </td>
+                    </td> -->
+                  </tr>
+                  <tr>
+                    <td>No Hp</td>
+                    <td><input name="hp" class="form-control input-sm" id="hp"></td>
+                    <td>Catatan</td>
+                    <td colspan="3"><input name="catatan" class="form-control input-sm"></td>
                   </tr>
                   <tr>
                     <td>Provinsi</td>
@@ -63,15 +69,12 @@
                       </select>
                     </td>
                   </tr>
-                  <tr>
-                    <td>No Hp</td>
-                    <td><input name="hp" class="form-control input-sm" id="hp"></td>
-                    <td>Catatan</td>
-                    <td colspan="3"><input name="catatan" class="form-control input-sm"></td>
-                  </tr>
                 </table>
-              </form>
               <hr/>
+              <table id="harga-kurir" width="100%" rules="all" border="1">
+                
+              </table>
+              </form>
               <table class="table">
                 <tr>
                   <th>No</th>
@@ -150,7 +153,9 @@
     function saveClick(){
       var validasi = isVlaid();
       if(validasi == true){
-        $('#myForm').ajaxSubmit({
+        var ht = $("input[name='harga_kirim_id']:checked","#myForm").val();
+        if(ht){
+          $('#myForm').ajaxSubmit({
             url:"<?=site_url('product/checkout');?>",
             type:'POST',
             beforeSend:function(r){
@@ -164,9 +169,12 @@
               berforeSendLoading.modal('hide');
               errorDialog.modal('show');
             },
-        }).data('jqxhr').done(function(r){
-            
-        });
+          }).data('jqxhr').done(function(r){
+              
+          });
+        }else{
+          alert('Anda belum memilih jasa kurir');
+        }
       }else{
         alert('Harap Lengkapi Data');
       }
@@ -205,24 +213,16 @@
       })
     }
     function kecamatanCh(){
-      var kurirId = $("#kurir_id").val();
       var provinsiId = $("#provinsi_id").val();
       var kabkotaId = $("#kabkota_id").val();
       var kecamatanId = $("#kecamatan_id").val();
       var berat = $("#berat_total").val();
       $.ajax({
         type:'POST',
-        data:{kurir_id:kurirId,provinsi_id:provinsiId,kabkota_id:kabkotaId,kecamatan_id:kecamatanId,berat:berat},
-        url:"<?=site_url('product/harga_kurir')?>",
+        data:{provinsi_id:provinsiId,kabkota_id:kabkotaId,kecamatan_id:kecamatanId,berat:berat},
+        url:"<?=site_url('shop/cek_harga_kurir')?>",
         success:function(r){
-          var r = eval("("+r+")");
-          if(r.success){
-            $("#harga_kirim").val(r.harga);
-            $("#harga_kirim_id").val(r.id);
-          }else{
-            $("#harga_kirim,#harga_kirim_id").val('');
-            alert('harga tidak ditemukan');
-          }
+          $("#harga-kurir").html(r);
         }
       });
     }

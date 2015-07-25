@@ -37,6 +37,7 @@ class wilayah_model extends MY_Model {
 		$kabkota_id = isset($_GET['kabkota_id']) ? $_GET['kabkota_id'] : 0;
 		$kecamatan_id = isset($_GET['kecamatan_id']) ? $_GET['kecamatan_id'] : 0;
 		$kurir_id = isset($_GET['kurir_id']) ? $_GET['kurir_id'] : 0;
+		$provinsi_id = isset($_GET['provinsi_id']) ? $_GET['provinsi_id'] : 0;
 		return $this->defaultDataTable("harga_kurir where kabkota_id = '$kabkota_id' and kecamatan_id = '$kecamatan_id' and kurir_id = '$kurir_id'",'berat');
 	}
 	public function provinsi($value='')

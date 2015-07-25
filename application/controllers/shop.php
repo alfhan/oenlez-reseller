@@ -42,4 +42,13 @@ class shop extends CI_Controller {
 		$this->email->message($message);
 		$this->email->send();
 	}
+	public function cek_harga_kurir()
+	{
+		$this->load->model('kurir_model');
+		$data = array(
+			'data' => $this->kurir_model->cek_harga_kurir(),
+			'berat' => $_POST['berat'],
+			);
+		$this->load->view('front/cek_harga_kurir',$data);
+	}
 }

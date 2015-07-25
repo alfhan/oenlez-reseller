@@ -449,6 +449,7 @@
 					d.kurir_id = $("#frm-tarif #kurir_id").val();
 					d.kabkota_id = $("#frm-tarif #kabkota_id").val();
 					d.kecamatan_id = $("#frm-tarif #kecamatan_id").val();
+					d.provinsi_id = $("#frm-tarif #provinsi_id").val();
 				}
 	        },
 	        "columns": [
@@ -533,7 +534,7 @@
 			$("#frm-tarif #harga,#frm-tarif #est,#frm-tarif #berat").val('');
 	    	$("#frm-tarif #nama").focus();
 	    });
-	    $("#frm-tarif #kabkota_id,#frm-tarif #kecamatan_id,#frm-tarif #kurir").change(function(){
+	    $("#frm-tarif #kabkota_id,#frm-tarif #kecamatan_id,#frm-tarif #kurir_id").change(function(){
 	    	dt_tarif.ajax.reload();
 	    });
 	});

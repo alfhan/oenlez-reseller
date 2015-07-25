@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2015 at 11:31 AM
+-- Generation Time: Jul 25, 2015 at 10:06 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -207,36 +207,28 @@ INSERT INTO `email_setting` (`id`, `protocol`, `host`, `port`, `user`, `pass`, `
 CREATE TABLE IF NOT EXISTS `harga_kurir` (
 `id` int(11) NOT NULL,
   `kabkota_id` int(11) NOT NULL,
-  `kecamatan_id` int(11) NOT NULL,
+  `kecamatan_id` int(11) NOT NULL DEFAULT '0',
   `berat` tinyint(4) NOT NULL,
   `harga` int(11) NOT NULL,
   `kurir_id` int(11) NOT NULL,
-  `provinsi_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+  `provinsi_id` int(11) NOT NULL,
+  `est` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `harga_kurir`
 --
 
-INSERT INTO `harga_kurir` (`id`, `kabkota_id`, `kecamatan_id`, `berat`, `harga`, `kurir_id`, `provinsi_id`) VALUES
-(1, 783, 4, 1, 8000, 1, 15),
-(2, 807, 13, 1, 5000, 2, 15),
-(3, 807, 13, 1, 10000, 4, 15),
-(4, 807, 14, 1, 10000, 4, 15),
-(5, 807, 14, 1, 5000, 2, 15),
-(6, 793, 15, 1, 5000, 2, 15),
-(7, 793, 15, 1, 10000, 4, 15),
-(8, 783, 4, 1, 7000, 2, 15),
-(9, 783, 8, 1, 10000, 2, 15),
-(10, 783, 9, 1, 10000, 2, 15),
-(11, 783, 10, 1, 10000, 2, 15),
-(12, 783, 11, 1, 10000, 2, 15),
-(13, 783, 11, 1, 15000, 4, 15),
-(14, 783, 10, 1, 15000, 4, 15),
-(15, 783, 9, 1, 15000, 4, 15),
-(16, 783, 8, 1, 15000, 4, 15),
-(17, 783, 4, 1, 15000, 4, 15),
-(19, 793, 16, 1, 5000, 2, 15);
+INSERT INTO `harga_kurir` (`id`, `kabkota_id`, `kecamatan_id`, `berat`, `harga`, `kurir_id`, `provinsi_id`, `est`) VALUES
+(1, 783, 0, 1, 5000, 1, 15, '1'),
+(2, 803, 0, 1, 5000, 1, 15, '1'),
+(3, 780, 0, 1, 6000, 1, 15, '1'),
+(4, 783, 4, 1, 5000, 4, 15, '1-3'),
+(5, 783, 10, 1, 5000, 4, 15, '1-3'),
+(6, 783, 10, 1, 10000, 5, 15, '1'),
+(7, 783, 11, 1, 5000, 4, 15, '1-3'),
+(8, 783, 4, 1, 10000, 5, 15, '1'),
+(9, 783, 11, 1, 10000, 5, 15, '1');
 
 -- --------------------------------------------------------
 
@@ -346,7 +338,6 @@ INSERT INTO `kabkota` (`id`, `provinsi_id`, `nama`) VALUES
 (593, 3, 'Kabupaten Rejang Lebong'),
 (594, 3, 'Kabupaten Seluma'),
 (595, 3, 'Kabupaten Bengkulu'),
-(596, 3, 'Propinsi Bengkulu'),
 (597, 4, 'Kabupaten Batang Hari'),
 (598, 4, 'Kabupaten Bungo'),
 (599, 4, 'Kabupaten Kerinci'),
@@ -558,7 +549,6 @@ INSERT INTO `kabkota` (`id`, `provinsi_id`, `nama`) VALUES
 (805, 15, 'Kota Pasuruan'),
 (806, 15, 'Kota Probolinggo'),
 (807, 15, 'Kota Surabaya'),
-(808, 15, 'Propinsi Jawa Timur'),
 (809, 16, 'Kabupaten Bantul'),
 (810, 16, 'Kabupaten Gunung Kidul'),
 (811, 16, 'Kabupaten Kulon Progo'),
@@ -885,12 +875,10 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
 
 INSERT INTO `kecamatan` (`id`, `kabkota_id`, `nama`, `updated_at`, `provinsi_id`) VALUES
 (3, 702, 'Tambun', '2015-07-02 13:35:47', 12),
-(4, 783, 'Dau', '2015-07-02 21:21:37', 15),
+(4, 783, 'Blimbing', '2015-07-23 17:48:29', 15),
 (5, 803, 'Klojen', '2015-07-02 21:21:17', 15),
-(8, 783, 'Wajak', '2015-07-03 12:45:55', 15),
-(9, 783, 'Turen', '2015-07-03 12:45:59', 15),
-(10, 783, 'Dampit', '2015-07-03 12:46:05', 15),
-(11, 783, 'Kepanjen', '2015-07-03 12:46:10', 15),
+(10, 783, 'Klojen', '2015-07-23 17:48:18', 15),
+(11, 783, 'Sukun', '2015-07-23 17:48:47', 15),
 (12, 702, 'Kranji', '2015-07-03 12:46:44', 12),
 (13, 807, 'Sukolilo', '2015-07-03 12:47:00', 15),
 (14, 807, 'Benowo', '2015-07-03 12:47:05', 15),
@@ -913,17 +901,18 @@ CREATE TABLE IF NOT EXISTS `kurir` (
 `id` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `keterangan` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kurir`
 --
 
 INSERT INTO `kurir` (`id`, `nama`, `keterangan`) VALUES
-(1, 'POS', ''),
-(2, 'JNE REGULAR', ''),
-(3, 'JNE OKE', ''),
-(4, 'JNE YES', '');
+(1, 'Pandu Logistic -  Over Night Service', ''),
+(2, 'Pandu Logistic - Same Day Service', ''),
+(3, 'Pandu Logistic - Regular', ''),
+(4, 'Wahana - Service Normal', ''),
+(5, 'Wahana - Service Express', '');
 
 -- --------------------------------------------------------
 
@@ -952,7 +941,7 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id`, `no_pelanggan`, `nama`, `alamat`, `kab_kota`, `kode_pos`, `hp`, `updated_at`, `aktif`, `username`, `password`, `foto`, `is_new`) VALUES
-(11, 'CUST-001', 'Taufik Ute Alfan', 'Jl. Semolowaru Indah II N-14', 'Surabaya', 610928, '08993484898', '2015-07-10 07:59:20', 0, 'alfhanz@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '', 1),
+(11, 'CUST-001', 'Taufik Ute Alfan', 'Jl. Semolowaru Indah II N-14', 'Surabaya', 610928, '08993484898', '2015-07-25 02:39:42', 0, 'alfhanz@gmail.com', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', '55b2f6eac8a9e.jpg', 1),
 (12, 'CUST-TOMG', 'inneke', '', '', 0, '', '2015-07-11 12:15:40', 0, 'kusumaningrum.inneke@gmail.com', '5e8e5e91c1bc68d05ad079b9b3632a9e6641c64a', '', 1);
 
 -- --------------------------------------------------------
@@ -1009,7 +998,7 @@ INSERT INTO `profil` (`id`, `nama`, `alamat`, `telp`, `email`, `foto`, `fb`, `tw
 CREATE TABLE IF NOT EXISTS `provinsi` (
 `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `provinsi`
@@ -1186,7 +1175,7 @@ INSERT INTO `sys_menu` (`id`, `parent_id`, `nama`, `url`, `icon`, `urutan`, `lev
 (16, 9, 'Slide Show', 'slide_show', NULL, 3, 2),
 (17, 0, 'Other', '#', 'fa fa-th', 4, 1),
 (18, 17, 'Banner', 'banner_management', NULL, 1, 2),
-(19, 17, 'Shipping Payment', 'shipping', NULL, 2, 2);
+(19, 17, 'Shipping Payment', 'wilayah', NULL, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -1271,14 +1260,16 @@ CREATE TABLE IF NOT EXISTS `temp_jual` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tanggal` date NOT NULL,
   `berat` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `temp_jual`
 --
 
 INSERT INTO `temp_jual` (`id`, `sesi_id`, `barang_id`, `qty`, `harga`, `pelanggan_id`, `updated_at`, `tanggal`, `berat`) VALUES
-(5, '9ce5a821234b1ab782670896f08c294c', 10, 12, 4500, 3, '2015-07-09 12:38:50', '2015-07-09', 80);
+(5, '9ce5a821234b1ab782670896f08c294c', 10, 12, 4500, 3, '2015-07-09 12:38:50', '2015-07-09', 80),
+(6, '9c76f0e2d27ee0748e5c0205d2f500d6', 13, 12, 7600, 11, '2015-07-24 20:28:38', '2015-07-25', 12),
+(7, '9c76f0e2d27ee0748e5c0205d2f500d6', 10, 12, 4500, 11, '2015-07-24 20:28:53', '2015-07-25', 80);
 
 --
 -- Indexes for dumped tables
@@ -1468,7 +1459,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 -- AUTO_INCREMENT for table `harga_kurir`
 --
 ALTER TABLE `harga_kurir`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `jenis_barang`
 --
@@ -1503,7 +1494,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 -- AUTO_INCREMENT for table `kurir`
 --
 ALTER TABLE `kurir`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
@@ -1518,7 +1509,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `provinsi`
 --
 ALTER TABLE `provinsi`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
@@ -1553,7 +1544,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 -- AUTO_INCREMENT for table `temp_jual`
 --
 ALTER TABLE `temp_jual`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
