@@ -209,6 +209,7 @@
         url:"<?=site_url('product/kecamatan')?>",
         success:function(r){
           $("#kecamatan_id").html(r);
+          kecamatanCh();
         }
       })
     }

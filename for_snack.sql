@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2015 at 10:06 AM
+-- Generation Time: Jul 27, 2015 at 05:31 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `artikel` (
 
 INSERT INTO `artikel` (`id`, `judul`, `isi`, `foto`, `user_id`, `tanggal`, `updated_at`, `is_aktif`, `kategori_artikel_id`) VALUES
 (1, 'Pay To', '<h3><b>Daftar Transfer</b></h3><b>Bank Mandiri</b><br>1440010025887 Taufik Ute Alfan<br><br><b>Bank BCA</b><br>1440010025887 Taufik Ute Alfan<br><br>', '', 1, '2015-07-07', '2015-07-10 21:30:52', 1, 1),
-(2, 'About Us', 'sdasrf', '558bfd9c3e8e1.jpg', 1, '2015-06-25', '2015-06-25 13:25:54', 1, 9),
-(3, 'Contact Us', '<p><b>Oenlez (O Enak Lezat).</b></p><p>935 W. Webster Ave New Streets Chicago, IL 60614, NY</p><p>Surabaya - Jawa Timur, Indonesia</p><p>Mobile: +62 899 348 4898</p><p>Fax: 1-714-252-0026</p><p>Email: oenlezsnack@gmail.com</p>', '', 1, '2015-06-25', '2015-07-06 13:59:57', 1, 1),
+(2, 'About Us', '<div><b>About Us</b></div><span><blockquote><div>Singkong merupakan salah satu komoditi yang ditanam di Indonesia. Singkong dapat diolah menjadi olahan setengah jadi dan olahan jadi yang siap dikonsumsi. Salah satu olahan jadi dari singkong adalah keripik singkong. Keripik singkong merupakan snack yang paling disukai oleh masyarakat Indonesia. Penggemarnya mulai dari anak-anak sampai dewasa, dari yang tinggal di desa sampai di kota. Namun dengan perkembangan jaman keripik singkong diolah dengan berbagai macam rasa. <br>Keripik singkong "Oenlez" merupakan inovasi keripik singkong yang cocok dinikmati untuk segala suasana, karena keripik singkong oenlez mempunyai taste yang oenak dan lezat. Keripik singkong oenlez diolah dari bahan-bahan yang alami dan berkualitas premium. Bumbu yang digunakan dari bahan yang alami (bukan flavour) seperti yang ada pada ingredient. Keripik singkong oenlez dibuat tidak menggunakan bahan pengawet, bahan tambahan pewarna dan perasa, MSG dan tidak mengandung gluten.</div></blockquote><div><br>Keripik singkong "Oenlez" mempunyai 4 varian rasa, yaitu :</div><ol><li>Palm soy</li>Rasa gurih manis dari perpaduan gula aren dan soya sehingga menghasilkan rasa sweet classic.<br><br><li>Cheezy<br></li>Rasa gurih keju yang membuat kita tidak bisa berhenti ngemil, karena rasa real cheese yang beda dari yang lainnya.<br><br><li>Crazy chilli</li>Rasa unique spicy dari rasa pedas yang menggigit dipadu dengan aroma jeruk purut yang segar sehingga membuat kita tergila-gila dan tak terlupakan.<br><br><li>BBQ</li>Keripik singkong yang dimix dengan keripik tales diberi bumbu bbq ditambah aroma blackpapper yang menggoda membuat kita sulit melupakan.<br></ol></span>', '558bfd9c3e8e1.jpg', 1, '2015-06-25', '2015-07-26 04:25:39', 1, 1),
+(3, 'Contact Us', '<p><b>Oenlez (O Enak Lezat).</b></p><p>935 W. Webster Ave New Streets Chicago, IL 60614, NY</p><p>Surabaya - Jawa Timur, Indonesia</p><p>Mobile 1:&nbsp;087881596699</p><p>Mobile 2:&nbsp;085770896699<br></p><p>Mobile 3:&nbsp;082311856699<br></p><p>Email: oenlezsnack@gmail.com</p>', '', 1, '2015-06-25', '2015-07-26 04:10:55', 1, 1),
 (4, 'FAQ''s', '<h3><b>Berikut ini adalah dafar pertanyaan yang mungkin sering muncul</b></h3><ul><li>Apakah bebas MSG</li><ul><li>Ya</li></ul><li>Apakah saya perlu login dan register untuk berbelanja disini</li><ul><li>Ya</li></ul><li>Apakah bisa mentransfer dari bank lain?</li><ul><li>Bisa, asalkan bank tujuannya adalah bank kami</li></ul><li>Kapan barang akan dikirim?</li><ul><li>Setelah konfirmasi pembayaran dan check, kami akan melakukan pengemasan barang yang dilanjutkan dengan mengirim ke bagian pengiriman</li></ul><li>Kemana saja barang akan dikirim</li><ul><li>Kemana saja asal sesuai dengan data kami dan jasa kurir kami</li></ul><li>Berapa lama akan sampai di tempat?</li><ul><li>Kami menyediakan beberapa paket pegiriman, sesuaikan dengan kebutuhan anda. lama pengiriman tergantung jasa kurir yang anda gunakan</li></ul></ul>', '', 1, '2015-06-25', '2015-07-10 21:29:22', 1, 1),
 (5, 'Term Of Use', '', '', 1, '2015-06-25', '2015-06-25 13:27:59', 1, 1),
 (6, 'Aturan & Cara Pembelian', '<ol><li>Pilih produk yang anda suka</li><li>Minimum pembelian tertera di setiap item produk</li><li>Klik add to cart untuk mulai membeli</li><li>Update keranjang belanja jika ingin mengubah quantity pembelian, dan klik belanja lagi jika ingin belanja produk lain</li><li>Klik Checkout untuk menyelesaikan belanja dan isi data pengiriman belanja</li><li>Anda akan mendapatkan notifikasi email sesuai dengan username&nbsp;</li><li>Silahkan transfer sesuai dengan daftar transfer</li><li>Login ke akun anda dan lakukan konfirmasi pembayaran terhadap barang yang anda beli di my account &gt; history belanja</li><li>Klik detail invoice yang anda transfer, kemudian klik konfirmasi dan isi konfirmasi tentang transfer Contoh: Taufik Ute Alfan# Bank Mandiri# 125.000# 11 Juli 2015# No Invoice #NSA021</li></ol>', '', 1, '2015-06-25', '2015-07-10 21:23:05', 1, 1),
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `harga_kurir` (
   `kurir_id` int(11) NOT NULL,
   `provinsi_id` int(11) NOT NULL,
   `est` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `harga_kurir`
@@ -228,7 +228,39 @@ INSERT INTO `harga_kurir` (`id`, `kabkota_id`, `kecamatan_id`, `berat`, `harga`,
 (6, 783, 10, 1, 10000, 5, 15, '1'),
 (7, 783, 11, 1, 5000, 4, 15, '1-3'),
 (8, 783, 4, 1, 10000, 5, 15, '1'),
-(9, 783, 11, 1, 10000, 5, 15, '1');
+(9, 783, 11, 1, 10000, 5, 15, '1'),
+(10, 545, 0, 1, 50000, 1, 1, '3-4'),
+(11, 700, 0, 1, 26500, 1, 12, '1-2'),
+(12, 717, 0, 1, 26500, 1, 12, '1-2'),
+(13, 701, 0, 1, 26500, 1, 12, '1-2'),
+(14, 702, 0, 1, 26500, 1, 12, '1-2'),
+(15, 770, 0, 1, 5000, 1, 15, '1-2'),
+(16, 771, 0, 1, 10000, 1, 15, '1-2'),
+(17, 772, 0, 1, 8000, 1, 15, '1-2'),
+(18, 773, 0, 1, 6000, 1, 15, '1-2'),
+(19, 774, 0, 1, 6000, 1, 15, '1-2'),
+(20, 789, 23, 1, 12500, 1, 15, '1-2'),
+(21, 909, 0, 1, 27500, 1, 23, '1-2'),
+(22, 670, 0, 1, 32000, 1, 8, '2-3'),
+(23, 884, 0, 1, 32000, 1, 21, '2-3'),
+(24, 885, 0, 1, 25500, 1, 21, '2-3'),
+(25, 687, 0, 1, 42500, 1, 10, '3-4'),
+(26, 595, 0, 1, 43000, 1, 3, '3-4'),
+(27, 585, 0, 1, 43000, 1, 3, '3-4'),
+(28, 586, 0, 1, 43000, 1, 3, '3-4'),
+(29, 587, 0, 1, 43000, 1, 3, '3-4'),
+(30, 1015, 0, 1, 72500, 1, 32, '3-4'),
+(31, 825, 0, 1, 40000, 1, 18, '2-3'),
+(32, 833, 0, 1, 40000, 1, 18, '2-3'),
+(33, 703, 0, 1, 26500, 1, 12, '1-2'),
+(34, 910, 0, 1, 40000, 1, 23, '2-3'),
+(35, 634, 0, 1, 40000, 1, 6, '2-3'),
+(36, 705, 0, 1, 29500, 1, 12, '1-2'),
+(37, 706, 0, 1, 29500, 1, 12, '1-2'),
+(38, 722, 0, 1, 29500, 1, 12, '1-2'),
+(39, 823, 0, 1, 20000, 1, 17, '1'),
+(40, 723, 0, 1, 23000, 1, 12, '1-2'),
+(41, 619, 0, 1, 55000, 1, 5, '2-3');
 
 -- --------------------------------------------------------
 
@@ -867,7 +899,7 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
   `nama` varchar(100) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `provinsi_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kecamatan`
@@ -889,7 +921,8 @@ INSERT INTO `kecamatan` (`id`, `kabkota_id`, `nama`, `updated_at`, `provinsi_id`
 (19, 791, 'Leces', '2015-07-03 12:50:24', 15),
 (20, 791, 'Pajarakan', '2015-07-03 12:50:31', 15),
 (21, 791, 'Paiton', '2015-07-03 12:50:36', 15),
-(22, 791, 'Maron', '2015-07-03 12:50:40', 15);
+(22, 791, 'Maron', '2015-07-03 12:50:40', 15),
+(23, 789, 'Bangil', '2015-07-26 08:07:07', 15);
 
 -- --------------------------------------------------------
 
@@ -987,7 +1020,7 @@ CREATE TABLE IF NOT EXISTS `profil` (
 --
 
 INSERT INTO `profil` (`id`, `nama`, `alamat`, `telp`, `email`, `foto`, `fb`, `twitter`, `kabkota`) VALUES
-(1, 'Oenlez', 'Jl. Semolowaru Indah II N-14', '08993484898', 'oenlezsnack@gmail.com', 'logo.jpg', '', '', 'Surabaya, Jawa Timur');
+(1, 'Oenlez', 'Jl. Semolowaru Indah II N-14', '087881596699', 'oenlezsnack@gmail.com', 'logo.jpg', '', '', 'Surabaya, Jawa Timur');
 
 -- --------------------------------------------------------
 
@@ -1459,7 +1492,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 -- AUTO_INCREMENT for table `harga_kurir`
 --
 ALTER TABLE `harga_kurir`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `jenis_barang`
 --
@@ -1489,7 +1522,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `kecamatan`
 --
 ALTER TABLE `kecamatan`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `kurir`
 --
