@@ -100,7 +100,16 @@ class barang_model extends MY_Model {
 			'keterangan' => $this->input->post('keterangan'),
 			'kategori_barang_id' => $this->input->post('kategori_barang_id'),
 			'min_pembelian' => $this->input->post('min_pembelian'),
+			'is_grosir' => $this->input->post('is_grosir'),
 			);
+		for($i=1;$i<=5;$i++){
+			$indexMin = 'min'.$i;
+			$indexMax = 'max'.$i;
+			$indexHarga = 'harga'.$i;
+			$data[$indexMin] =  $this->input->post($indexMin) ? $this->input->post($indexMin) : 0;
+			$data[$indexMax] =  $this->input->post($indexMax) ? $this->input->post($indexMax) : 0;
+			$data[$indexHarga] =  $this->input->post($indexHarga) ? $this->input->post($indexHarga) : 0;
+		}
 		if(!$foto){
 			unset($data['foto']);
 		}else{

@@ -65,23 +65,42 @@
 		                        	<option value="0" <?=@$data['ready_stock'] == 0 ? "selected='selected'":""?>>Not-Ready</option>
 		                        </select>
 		                    </div>
-		                    <label for="foto" class="col-sm-3 control-label">Gambar 1</label>
+		                    <label for="foto" class="col-sm-1 control-label">Gambar 1</label>
 		                    <div class="col-sm-3">
 		                        <input type="file" name="foto" id="foto" class="form-control input-sm" />
 		                    </div>
+		                    <label for="harga_jual" class="col-sm-1 control-label">Grosir</label>
+		                	<div class="col-sm-2">
+		                		<select class="form-control input-sm" name="is_grosir" id="is_grosir">
+		                			<option value="0" <?=@$data['is_grosir'] == 0 ? "selected='selected'":""?>>Tidak</option>
+		                			<option value="1" <?=@$data['is_grosir'] == 1 ? "selected='selected'":""?>>Ya</option>
+		                		</select>
+		                	</div>
 		                </div>
 		                <div class="form-group">
-		                    <label for="harga_jual" class="col-sm-3 control-label">Harga Jual/Beli</label>
+		                    <label for="harga_jual" class="col-sm-3 control-label">Harga Jual/Awal</label>
 		                    <div class="col-sm-1">
-		                        <input name="harga_jual" id="harga_jual" class="form-control input-sm" required value="<?=@$data['harga_jual']?>" />
+		                        <input <?=@$data['is_grosir'] == 0 ? "":"readonly='true'"?> name="harga_jual" id="harga_jual" class="form-control input-sm" required value="<?=@$data['harga_jual']?>" />
 		                    </div>
 		                    <div class="col-sm-1">
-		                        <input name="harga_beli" id="harga_beli" class="form-control input-sm" required value="<?=@$data['harga_beli']?>" />
+		                        <input <?=@$data['is_grosir'] == 0 ? "":"readonly='true'"?> name="harga_beli" id="harga_beli" class="form-control input-sm" required value="<?=@$data['harga_beli']?>" />
 		                    </div>
 		                    <label for="foto2" class="col-sm-3 control-label">Gambar 2 (Recomended Image)</label>
 		                    <div class="col-sm-3">
 		                        <input type="file" name="foto2" id="foto2" class="form-control input-sm" />
 		                    </div>
+		                </div>
+		                <div class="form-group" id="grosir" <?=@$data['is_grosir'] == 0 ? "style='display:none'":""?> >
+		                	<div class="col-sm-1"></div>
+		                	<?php for($i=1;$i<=5;$i++){ ?>
+		                	<div class="col-sm-2">
+		                		<b>Harga Grosir <?=$i?></b>
+		                		<input name="min<?=$i?>" id="min<?=$i?>" class="form-control input-sm" placeholder="QTY Min" required />
+		                		<input name="max<?=$i?>" id="max<?=$i?>" class="form-control input-sm" placeholder="QTY Max" required />
+		                		<input name="harga<?=$i?>" id="harga<?=$i?>" class="form-control input-sm" placeholder="Harga" required />
+		                	</div>
+		                	<?php } ?>
+		                	<div class="col-sm-1"></div>
 		                </div>
 		                <div class="form-group">
 		                    <label for="harga_jual" class="col-sm-3 control-label">Deskripsi Produk</label>
