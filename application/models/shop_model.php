@@ -126,6 +126,7 @@ class shop_model extends MY_Model {
 		$temp = $this->db->get('temp_jual')->result_array();
 		#create detail shop
 		$total = 0;
+		$xberat = 0;
 		$tanggal = date("Y-m-d");
 		foreach ($temp as $r) {
 			$jumlah = $r['qty']*$r['harga'];
@@ -139,8 +140,16 @@ class shop_model extends MY_Model {
 				);
 			$this->db->insert('shop_detail',$data);
 			$total += $jumlah;
+			$xberat += $r['berat'];
 		}
 		#create shop
+		$hargaKurir = $this->db->get_where('harga_kurir',array('id'=>$_POST['harga_kirim_id']));
+		$n = $hargaKurir['harga'];
+		if($xberat > $hargaKurir['berat']){
+			$b = ($xberat/$hargaKurir['berat']);
+			$c = ceil($b);
+			$n = $hargaKurir['harga']*$c;
+		}
 		$data = array(
 			'id' => $shop_id,
 			'pelanggan_id' => $pelanggan_id,
@@ -153,7 +162,7 @@ class shop_model extends MY_Model {
 			'kecamatan_id' => $_POST['kecamatan_id'],
 			'total' => $total,
 			'harga_kirim_id' => $_POST['harga_kirim_id'],
-			'harga_kirim' => $_POST['harga_kirim'],
+			'harga_kirim' => $n,
 			'no_invoice' => $no_invoice,
 			'tanggal' => $tanggal,
 			'catatan' => $_POST['catatan'],
