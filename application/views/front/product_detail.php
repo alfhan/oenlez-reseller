@@ -73,13 +73,27 @@
                                 <p>Code: <?=$data['kode_barang']?></p>
                                 <!-- <img src="images/product-details/rating.png" alt="" /> -->
                                 <span>
+									<?php 
+										if($data['is_grosir'] == 0){ 
+									?>
                                     <span>Rp <?=$data['harga_jual']?></span>
+									<?php }else{ ?>
+									<?php 
+										for($i=1;$i<=5;$i++){
+											$min = 'min'.$i;
+											$max = 'max'.$i;
+											$harga = 'harga'.$i;
+											if($data[$min])
+												echo "<span style='font-size:20px'>$data[$min] - $data[$max] Dus  Rp ".number_format($data[$harga],0,',','.')."</span>";
+										}
+									?>
+									<?php } ?>
                                     <!--<label>Quantity:</label>
                                     <input type="text" value="1" name="qty" />-->
-                                    <button type="button" class="btn btn-fefault cart">
+                                    <a href="<?=site_url('product/add/'.$data['id'])?>" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Add to cart
-                                    </button>
+                                   </a>
                                 </span>
                                 <p><b>Availability:</b> <?=$data['ready_stock'] == 1 ? "In Stock":"Out of Stock"?></p>
                                 <p><b>Weight:</b> <?=$data['berat']?> <small>gr</small></p>

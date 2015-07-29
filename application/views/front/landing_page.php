@@ -13,14 +13,27 @@
 				<div class="single-products">
 					<div class="productinfo text-center">
 						<img src="<?=base_url('images/kategori_feature/'.$r['foto'])?>" alt="" />
-						<h2>Rp <?=$r['harga_jual']?></h2>
+						<?php if($r['is_grosir'] == 0){ ?><h2>Rp <?=$r['harga_jual']?></h2> <?php } ?>
 						<p><?=$r['nama']?></p>
-						<!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> -->
 					</div>
 					<div class="product-overlay">
 						<div class="overlay-content">
-							<h3 style="color:#fff">Min Pembelian <br /> <?=$r['min_pembelian']?> Item</h3>
+							<h3 style="color:#fff">Min Pembelian <br /> <?=$r['min_pembelian']?> <?=$r['is_grosir']?'Kardus':'Item'?></h3>
+							<?php if($r['is_grosir'] == 0){ ?>
 							<h2>Rp <?=$r['harga_jual']?></h2>
+							<?php 
+								}else{
+									echo "<table width='100%'>";
+									for($i=1;$i<=5;$i++){
+										$min = 'min'.$i;
+										$max = 'max'.$i;
+										$harga = 'harga'.$i;
+									if($r[$min])
+										echo "<tr><td>$r[$min] - $r[$max] Dus</td><td> Rp ".number_format($r[$harga],0,',','.')."</td></tr>";
+									}
+									echo "</table>";
+								} 
+							?>
 							<p><?=$r['nama']?></p>
 							<a href="<?=site_url('product/add/'.$r['id'])?>" class="btn btn-default btn-sm pull-left"><i class="fa fa-shopping-cart"></i> Add</a>
 							<a href="<?=site_url('product/detail/'.$r['id'])?>" class="btn btn-default btn-sm pull-right"><i class="fa fa-plus-square"></i> Detail</a>

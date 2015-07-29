@@ -92,12 +92,17 @@
 		                </div>
 		                <div class="form-group" id="grosir" <?=@$data['is_grosir'] == 0 ? "style='display:none'":""?> >
 		                	<div class="col-sm-1"></div>
-		                	<?php for($i=1;$i<=5;$i++){ ?>
+		                	<?php 
+								for($i=1;$i<=5;$i++){ 
+									$min = 'min'.$i;
+									$max = 'max'.$i;
+									$harga = 'harga'.$i;
+							?>
 		                	<div class="col-sm-2">
 		                		<b>Harga Grosir <?=$i?></b>
-		                		<input name="min<?=$i?>" id="min<?=$i?>" class="form-control input-sm" placeholder="QTY Min" required />
-		                		<input name="max<?=$i?>" id="max<?=$i?>" class="form-control input-sm" placeholder="QTY Max" required />
-		                		<input name="harga<?=$i?>" id="harga<?=$i?>" class="form-control input-sm" placeholder="Harga" required />
+		                		<input name="min<?=$i?>" id="min<?=$i?>" value="<?=@$data[$min]?>" class="form-control input-sm" placeholder="QTY Min" required />
+		                		<input name="max<?=$i?>" id="max<?=$i?>" value="<?=@$data[$max]?>" class="form-control input-sm" placeholder="QTY Max" required />
+		                		<input name="harga<?=$i?>" id="harga<?=$i?>" value="<?=@$data[$harga]?>" class="form-control input-sm" placeholder="Harga" required />
 		                	</div>
 		                	<?php } ?>
 		                	<div class="col-sm-1"></div>

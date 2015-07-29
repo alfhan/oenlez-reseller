@@ -34,6 +34,9 @@ class shop_model extends MY_Model {
 			'berat' => $barang['berat'],
 			'tanggal' => date("Y-m-d"),
 			);
+		if($barang['is_grosir'] == 1){
+			$data['harga'] = $this->perbandingan($barang['min_pembelian'],$barang);
+		}
 		if($this->session->userdata('tipe') == sha1(md5(MEMBER)) ){
     		$data['pelanggan_id'] = $this->session->userdata('id');
     	}
@@ -45,6 +48,21 @@ class shop_model extends MY_Model {
 			$this->db->trans_commit();
 			return true;
 		}
+	}
+	public function perbandingan($value,$barang)
+	{
+		if($value >= $barang['min1'] and $value <= $barang['max1'] and $barang['harga1'] > 0)
+			return $barang['harga1'];
+		elseif($value >= $barang['min2'] and $value <= $barang['max2'] and $barang['harga2'] > 0)
+			return $barang['harga2'];
+		elseif($value >= $barang['min3'] and $value <= $barang['max3'] and $barang['harga3'] > 0)
+			return $barang['harga3'];
+		elseif($value >= $barang['min4'] and $value <= $barang['max4'] and $barang['harga4'] > 0)
+			return $barang['harga4'];
+		elseif($value >= $barang['min5'] and $value <= $barang['max5'] and $barang['harga5'] > 0)
+			return $barang['harga5'];
+		else
+			return false;
 	}
 	public function update_temp_shop($value='')
 	{
@@ -65,6 +83,9 @@ class shop_model extends MY_Model {
 			if($this->session->userdata('tipe') == sha1(md5(MEMBER)) ){
 	    		$data['pelanggan_id'] = $this->session->userdata('id');
 	    	}
+	    	if($barang['is_grosir'] == 1){
+				$data['harga'] = $this->perbandingan($qty,$barang);
+			}
 			$this->db->where(array('id'=>$id[$i]));
 			$this->db->update('temp_jual',$data);
 		}
