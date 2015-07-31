@@ -143,7 +143,7 @@ class shop_model extends MY_Model {
 			$xberat += $r['berat'];
 		}
 		#create shop
-		$hargaKurir = $this->db->get_where('harga_kurir',array('id'=>$_POST['harga_kirim_id']));
+		$hargaKurir = $this->db->get_where('harga_kurir',array('id'=>$_POST['harga_kirim_id']))->row_array();
 		$n = $hargaKurir['harga'];
 		if($xberat > $hargaKurir['berat']){
 			$b = ($xberat/$hargaKurir['berat']);
