@@ -31,22 +31,22 @@
     $subT += $jml;
     echo "<tr>
     <td>$r[barang_kode] - $r[barang_nama] - Qty : $r[qty]</td>
-    <td align='right'>$r[harga]</td>
-    <td align='right'>$jml</td>
+    <td align='right'>".numIndo($r['harga'],0)."</td>
+    <td align='right'>".numIndo($jml,0)."</td>
     </tr>";  
   }
   $total = $list[0]['harga_kirim']+$subT;
   ?>
   <tr>
     <td colspan="2" align="right">Sub Total (Rp)</td>
-    <td align="right"><b><?=$subT?></b></td>
+    <td align="right"><b><?=numIndo($subT,0)?></b></td>
   </tr>
   <tr>
     <td colspan="2" align="right">Delivery (Rp)</td>
-    <td align="right"><b><?=$list[0]['harga_kirim']?></b></td>
+    <td align="right"><b><?=numIndo($list[0]['harga_kirim'],0)?></b></td>
   </tr>
   <tr>
     <td colspan="2" align="right">Total (Rp)</td>
-    <td align="right"><b><?=$total?></b></td>
+    <td align="right"><b><?=numIndo($total,0)?></b></td>
   </tr>
 </table>

@@ -24,6 +24,8 @@
                 <?php 
                     $o = 1;
                     foreach ($data->result_array() as $r) { 
+                        $jml = $r['total']+$r['harga_kirim'];
+                        $strJml = numIndoNull($jml,0);
                 ?>
                 <tr>
                     <td><?=$o++?></td>
@@ -33,7 +35,7 @@
                     <td>
                         <label class="btn btn-xs <?=colorStatusOrder($r['status_order'])?>"><?=statusOrder($r['status_order'])?></label>
                     </td>
-                    <td><?=$r['total']+$r['harga_kirim'];?></td>
+                    <td><?=$strJml;?></td>
                     <td>
                         <a href="<?=base_url('daftar_penjualan/form/'.$r['id'])?>" class="btn btn-xs btn-warning"><i class="fa fa-th"></i> Detail</a>
                         <a href="javascript:void(0)" class="btn btn-xs btn-danger" onclick="deleteClick('<?=$r['id']?>')"><i class="fa fa-minus"></i> Delete</a>

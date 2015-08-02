@@ -18,7 +18,7 @@
 		<td>$n</td>
 		<td>".dateToIndo($r['tanggal'])."</td>
 		<td>$r[no_invoice]</td>
-		<td>$r[total]</td>
+		<td>".numIndo($r['total'],0)."</td>
 		<td>$r[nama]</td>
 		<td>".statusOrder($r['status_order'])."</td>
 		<td><a href='".site_url('product/invoice')."/$r[id]' class='btn btn-xs btn-info'><i class='fa fa-search'></i> Detail</a></td>

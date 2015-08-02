@@ -82,13 +82,19 @@
                   <th>Harga</th>
                   <th>Jumlah</th>
                 </tr>
-                <?php $b=0; $no=1; $ttl = 0; foreach ($list->result_array() as $r) { ?>
+                <?php 
+                  $b=0; 
+                  $no=1; 
+                  $ttl = 0; 
+                  foreach ($list->result_array() as $r) { 
+                ?>
                 <tr>
                   <td><?=$no++?></td>
                   <td><?=$r['kode_barang']?> - <?=$r['barang_nama']?> - Qty : <?=$r['qty']?> - @Weight : <?=$r['berat']?></td>
                   <td><?=$r['harga']?></td>
                   <td>
                     <?php
+
                       $jml = $r['qty']*$r['harga'];
                       echo $jml;
                       $ttl += $jml;

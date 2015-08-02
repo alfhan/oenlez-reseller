@@ -145,6 +145,7 @@ class shop_model extends MY_Model {
 		#create shop
 		$hargaKurir = $this->db->get_where('harga_kurir',array('id'=>$_POST['harga_kirim_id']))->row_array();
 		$n = $hargaKurir['harga'];
+		$xberat = ($xberat/1000);
 		if($xberat > $hargaKurir['berat']){
 			$b = ($xberat/$hargaKurir['berat']);
 			$c = ceil($b);
@@ -234,8 +235,8 @@ class shop_model extends MY_Model {
 				    $subT += $jml;
 				    $message .= "<tr>
 				    <td>$r[barang_kode] - $r[barang_nama] - Qty : $r[qty]</td>
-				    <td align='right'>$r[harga]</td>
-				    <td align='right'>$jml</td>
+				    <td align='right'>".numIndo($r['harga'])."</td>
+				    <td align='right'>".numIndo($jml,0)."</td>
 				    </tr>";  
 				  }
 				  $total = $harga_kirim+$subT;
@@ -245,11 +246,11 @@ class shop_model extends MY_Model {
 				  </tr>
 				  <tr>
 				    <td colspan='2' align='right'>Delivery (Rp)</td>
-				    <td align='right'><b>$harga_kirim</b></td>
+				    <td align='right'><b>".numIndo($harga_kirim,0)."</b></td>
 				  </tr>
 				  <tr>
 				    <td colspan='2' align='right'>Total (Rp)</td>
-				    <td align='right'><b>$total</b></td>
+				    <td align='right'><b>".numIndo($total,0)."</b></td>
 				  </tr>
 				</table>
 			</body>
