@@ -81,10 +81,10 @@ class pelanggan_model extends MY_Model {
 		#$this->db->trans_start();
 		if ($this->db->trans_status() === FALSE){
 			$this->db->trans_rollback();
-			return true;
+			return false;
 		}else{
 			$this->db->trans_commit();
-			return false;
+			return true;
 		}
 	}
 }

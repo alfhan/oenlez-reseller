@@ -35,26 +35,6 @@ $(document).ready(function(){
           closeButton: true,
           show: false,
         });
-    function saveClick(){
-        $('#myForm').ajaxSubmit({
-            url:'<?php echo $urlSave;?>',
-            type:'POST',
-            beforeSend:function(r){
-              berforeSendLoading.modal('show');
-            },
-            success:function(r){
-              berforeSendLoading.modal('hide');
-              successDialog.modal('show');
-              window.open("<?php echo base_url($link);?>","_self");
-            },
-            error:function(r){
-              berforeSendLoading.modal('hide');
-              errorDialog.modal('show');
-            },
-        }).data('jqxhr').done(function(r){
-            
-        });
-    }
 	function deleteClick(id,foto){
 		bootbox.confirm("Apakah anda yakin ingin menghapus?", function(result) {
 			if (result == true) {

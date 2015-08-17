@@ -55,10 +55,10 @@
                             <button class="btn bg-red btn-xs" style="font-size:11px;display:block;width:100%;">
                                 Rp<?php echo numIndo($r['harga_jual'],0);?>
                             </button>
-                            <b>Harga Beli : </b>
+                            <!-- <b>Harga Beli : </b>
                             <button class="btn bg-green btn-xs" style="font-size:11px;display:block;width:100%;">
                                 Rp<?php echo numIndo($r['harga_beli'],0);?>
-                            </button>
+                            </button> -->
                             </td>
                         </tr>    
                     </table>

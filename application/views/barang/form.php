@@ -21,13 +21,13 @@
 		                    <div class="col-sm-3">
 		                        <input name="kode_barang" value="<?=@$data['kode_barang']?>" id="kode_barang" class="form-control input-sm" required />
 		                    </div>
-		                    <label for="recomended_item" class="col-sm-2 control-label">Recomended Item</label>
+		                    <!-- <label for="recomended_item" class="col-sm-2 control-label">Recomended Item</label>
 		                    <div class="col-md-3">
 		                    	<select name="recomended_item" id="recomended_item" class="form-control input-sm">
 		                    		<option value="1" <?=$data['recomended_item'] == 1 ? "selected='selected'":""?>>Ya</option>
 		                    		<option value="0" <?=$data['recomended_item'] == 0 ? "selected='selected'":""?>>Tidak</option>
 		                    	</select>
-		                    </div>
+		                    </div> -->
 		                </div>
 		                <div class="form-group">
 		                    <label for="berat" class="col-sm-3 control-label">Berat (gr)</label>
@@ -82,13 +82,13 @@
 		                    <div class="col-sm-1">
 		                        <input name="harga_jual" id="harga_jual" class="form-control input-sm" required value="<?=@$data['harga_jual']?>" />
 		                    </div>
-		                    <div class="col-sm-1">
+		                    <!-- <div class="col-sm-1">
 		                        <input name="harga_beli" id="harga_beli" class="form-control input-sm" required value="<?=@$data['harga_beli']?>" />
-		                    </div>
-		                    <label for="foto2" class="col-sm-3 control-label">Gambar 2 (Recomended Image)</label>
+		                    </div> -->
+		                    <!-- <label for="foto2" class="col-sm-3 control-label">Gambar 2 (Recomended Image)</label> 
 		                    <div class="col-sm-3">
 		                        <input type="file" name="foto2" id="foto2" class="form-control input-sm" />
-		                    </div>
+		                    </div>-->
 		                </div>
 		                <div class="form-group" id="grosir" <?=@$data['is_grosir'] == 0 ? "style='display:none'":""?> >
 		                	<div class="col-sm-1"></div>
