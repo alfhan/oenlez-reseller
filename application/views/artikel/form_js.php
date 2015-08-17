@@ -60,4 +60,28 @@ $(document).ready(function(){
 	        
 	    });
 	}
+	function removeImage(){
+		var file = $("#old_file").val();
+		var id = $("#id").val();
+		bootbox.confirm("Apakah anda yakin ingin menghapus?", function(result) {
+			if (result == true) {
+                $.ajax({
+                	data:{id:id,foto:file},
+                	type:'POST',
+                	url:'<?=$urlDeleteFoto;?>',
+                	success:function(r){
+		              berforeSendLoading.modal('hide');
+		              successDialog.modal('show');
+		            },
+		            error:function(r){
+		              berforeSendLoading.modal('hide');
+		              errorDialog.modal('show');
+		            },
+                	beforeSend:function(r){
+                	  berforeSendLoading.modal('show');
+                	}
+                });
+            }
+		});
+	}
 </script>

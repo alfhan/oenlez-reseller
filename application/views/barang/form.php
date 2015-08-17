@@ -80,10 +80,10 @@
 		                <div class="form-group">
 		                    <label for="harga_jual" class="col-sm-3 control-label">Harga Jual/Awal</label>
 		                    <div class="col-sm-1">
-		                        <input <?=@$data['is_grosir'] == 0 ? "":"readonly='true'"?> name="harga_jual" id="harga_jual" class="form-control input-sm" required value="<?=@$data['harga_jual']?>" />
+		                        <input name="harga_jual" id="harga_jual" class="form-control input-sm" required value="<?=@$data['harga_jual']?>" />
 		                    </div>
 		                    <div class="col-sm-1">
-		                        <input <?=@$data['is_grosir'] == 0 ? "":"readonly='true'"?> name="harga_beli" id="harga_beli" class="form-control input-sm" required value="<?=@$data['harga_beli']?>" />
+		                        <input name="harga_beli" id="harga_beli" class="form-control input-sm" required value="<?=@$data['harga_beli']?>" />
 		                    </div>
 		                    <label for="foto2" class="col-sm-3 control-label">Gambar 2 (Recomended Image)</label>
 		                    <div class="col-sm-3">

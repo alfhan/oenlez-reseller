@@ -92,4 +92,16 @@ class artikel_model extends MY_Model {
 			return $uniqid;
 		}
     }
+    public function delete_foto($value='')
+    {
+    	$id = $_POST['id'];
+    	$data['foto'] = null;
+    	$this->db->where(array('id'=>$id));
+    	$this->db->update($this->table,$data);
+    	$this->load->helper('file');
+		$foto = $this->input->post('foto');
+		if($foto){
+			@unlink('images/blog/'.$foto);
+		}
+    }
 }

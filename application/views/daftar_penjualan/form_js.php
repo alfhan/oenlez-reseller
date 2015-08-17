@@ -53,4 +53,7 @@
 	        
 	    });
 	}
+  $(".cetak-click").click(function(){
+    window.open("<?=$urlCetak?>","_blank");
+  });
 </script>

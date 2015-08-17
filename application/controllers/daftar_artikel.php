@@ -38,6 +38,7 @@ class daftar_artikel extends CI_Controller {
 		}
 		$js = array(
 			'urlSave' => base_url("daftar_artikel/simpan"),
+			'urlDeleteFoto' => base_url("daftar_artikel/delete_foto"),
 			);
 		$content['content'] = $this->load->view($this->kelas .'/form',$index,true);
 		$content['js'] = $this->load->view($this->kelas .'/form_js',$js,true);
@@ -49,5 +50,9 @@ class daftar_artikel extends CI_Controller {
 	}
 	public function hapus(){
 		$this->artikel_model->delete();
+	}
+	public function delete_foto($value='')
+	{
+		$this->artikel_model->delete_foto();
 	}
 }

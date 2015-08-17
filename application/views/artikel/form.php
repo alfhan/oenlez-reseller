@@ -43,6 +43,11 @@
 		                    <label for="foto" class="col-sm-3 control-label">Foto</label>
 		                    <div class="col-sm-3">
 		                        <input type="file" name="foto" id="foto" class="form-control input-sm" />
+		                    	<?php
+		                    	if(isset($data['foto']) and !empty($data['foto'])){
+		                    		echo "<a href='#' onclick='removeImage()' class='btn btn-xs btn-danger'><i class='fa fa-minus'></i> Delete Foto</a>";
+		                    	}
+		                    	?>
 		                    </div>
 		                </div>
 		                <div class="form-group">

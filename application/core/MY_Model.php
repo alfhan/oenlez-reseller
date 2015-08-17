@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class MY_Model extends CI_Model {
+	protected $getWhere;
     function __construct(){
         parent::__construct();
         date_default_timezone_set("Asia/Jakarta");
@@ -200,11 +201,16 @@ class MY_Model extends CI_Model {
 			$q = $_GET['search']['value'];
 			$sql .= " where $column like '%$q%'";
 		}
+		$sql .= $this->getWhere;
 		$data['recordsFiltered'] = $this->db->query($sql)->num_rows();
 		$limit = self::limit( $_GET);
 		$sql .= " $limit ";
 		$data['data'] = $this->db->query($sql)->result_array();
 		echo json_encode($data);
+	}
+	public function setWhere($value='')
+	{
+		$this->getWhere = $value;
 	}
 	static function limit ( $request)
 	{

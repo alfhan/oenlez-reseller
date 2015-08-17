@@ -65,6 +65,7 @@
 				            <div class="col-md-6">
 				            	<a href="<?=base_url('daftar_penjualan');?>" class="btn btn-sm btn-info"><i class="fa fa-angle-double-left"></i> Kembali</a>
 						<a href="javascript:void(0)" class="btn btn-sm btn-primary save-click pull-right"><i class="fa fa-save"></i> Simpan</a>
+						<a href="javascript:void(0)" class="btn btn-sm btn-success cetak-click pull-right"><i class="fa fa-print"></i> Cetak</a>
 				            </div>
 			            </td>
 			          </tr>

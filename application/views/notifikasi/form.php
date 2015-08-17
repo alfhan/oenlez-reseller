@@ -18,9 +18,18 @@
 							<div class="col-md-12">
 								<b><?=dateToIndo($data['parent']['waktu'],true,true)?></b> : 
 								<br />
-								<?=nl2br($data['parent']['isi'])?>
+								<?php
+									echo "<b>".$data['parent']['email']."</b>";
+									echo "<br />";
+									echo "<b>".$data['parent']['tipe']."</b> - ".$data['parent']['subject'];
+									echo "<br />";
+									echo $data['parent']['isi'];
+								?>
 							</div>
 						</div>
+						<?php
+						if($data['parent']['pelanggan_id'] > 0){
+						?>
 						<table class="table" id="tb">
 							<thead>
 								<tr>
@@ -46,8 +55,12 @@
 							?>
 							</tbody>
 						</table>
+						<?php  } ?>
 					</form>
 				</div>
+				<?php
+				if($data['parent']['pelanggan_id'] > 0){
+				?>
 				<div class="box-footer">
 					<form class="cmxform form-horizontal tasi-form" role="form" id="myForm">
 		                <input type="hidden" name="id" id="id" value="<?=$data['parent']['id']?>" />
@@ -63,6 +76,7 @@
 		                </div>
 		            </form>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

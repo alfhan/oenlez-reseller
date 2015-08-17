@@ -87,4 +87,18 @@ class pesan_model extends MY_Model {
 		$rs = $this->db->query($sql)->result_array();
 		return $rs;
 	}
+	public function contact_us_pesan($value='')
+	{
+		$name = $this->input->post('name');
+		$subject = $this->input->post('subject');
+		$data = array(
+			'isi'=>$this->input->post('message'),
+			'subject'=> "($name) $subject",
+			'email'=>$this->input->post('email'),
+			'status'=>0,
+			'tipe'=>'Contact Us',
+			'waktu'=>date("Y-m-d H:i:s"),
+			);
+		$this->db->insert('pesan',$data);
+	}
 }

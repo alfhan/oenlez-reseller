@@ -7,7 +7,9 @@
     <?php $this->load->view('front/nav');?>
     <section id="advertisement">
         <div class="container">
+        <?php if(isset($top[0]['is_aktif'])){ ?>
             <img src="<?=base_url('images/banner/'.$top[0]['foto'])?>" alt="" />
+        <?php } ?>
         </div>
     </section>
     <section>

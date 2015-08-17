@@ -6,10 +6,10 @@ $(document).ready(function(){
 	$(".textarea").wysihtml5();
 	$("#is_grosir").change(function(){
 		if($(this).val() == 1){
-			$("#harga_jual,#harga_beli").attr("readonly","true");
+			// $("#harga_jual,#harga_beli").attr("readonly","true");
 			$("#grosir").show();
 		}else{
-			$("#harga_jual,#harga_beli").removeAttr("readonly");
+			// $("#harga_jual,#harga_beli").removeAttr("readonly");
 			$("#grosir").hide();
 		}
 	});

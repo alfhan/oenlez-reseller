@@ -23,13 +23,15 @@ class blog extends CI_Controller {
 	}
 	public function contact_us()
 	{
-		#3 id contacct_us
+		#3 id contact_us
 		$data = array(
 			'data' => $this->artikel_model->getById(3),
 			);
 		if(isset($_POST['submit'])){
 			#kirim email
 			$data['email'] = true;
+			$this->load->model('pesan_model');
+			$this->pesan_model->contact_us_pesan();
 		}
 		$this->load->view('front/contact_us',$data);
 	}
