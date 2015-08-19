@@ -27,7 +27,7 @@
 					?>
 						<div class="item <?=$active?>">
 							<div class="col-sm-4">
-								<h1><span>O</span>-enlez</h1>
+								<h1><span></span>Oenlez</h1>
 								<h2><?=$r['judul'];?></h2>
 								<p><?=nl2br($r['keterangan'])?></p>
 							</div>

@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-sm-2">
 					<div class="companyinfo">
-						<h2><span>O</span>-enlez</h2>
+						<h2><span></span>Oenlez</h2>
 					</div>
 				</div>
 				<div class="col-sm-7">
