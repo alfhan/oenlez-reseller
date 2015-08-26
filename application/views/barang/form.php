@@ -78,7 +78,7 @@
 		                	</div>
 		                </div>
 		                <div class="form-group">
-		                    <label for="harga_jual" class="col-sm-3 control-label">Harga Jual/Awal</label>
+		                    <label for="harga_jual" class="col-sm-3 control-label">Harga</label>
 		                    <div class="col-sm-1">
 		                        <input name="harga_jual" id="harga_jual" class="form-control input-sm" required value="<?=@$data['harga_jual']?>" />
 		                    </div>
