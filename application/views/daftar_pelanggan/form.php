@@ -57,6 +57,12 @@
 		                		<input name="hp" id="hp" class="form-control input-sm" value="<?=@$r['hp']?>">
 		                	</div>
 		                </div>
+		                <div class="form-group">
+		                	<label class="col-md-3 control-label">Facebook</label>
+		                	<div class="col-md-7">
+		                		<input name="fb" id="fb" class="form-control input-sm" value="<?=@$r['fb']?>">
+		                	</div>
+		                </div>
 		            </form>
 				</div>
 				<div class="box-footer">

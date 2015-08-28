@@ -45,13 +45,17 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<?=base_url('images/kategori_feature/'.$r['foto'])?>" alt="" />
+                                        <?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
                                         <h2>Rp <?=$r['harga_jual']?></h2>
+                                        <?php } ?>
                                         <p><?=$r['nama']?></p>
                                     </div>
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
+                                    <?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
                                         <li><a href="<?=site_url('product/add/'.$r['id'])?>"><i class="fa fa-shopping-cart"></i>Add to cart</a></li>
+                                    <?php } ?>
                                         <li><a href="<?=site_url('product/detail/'.$r['id'])?>"><i class="fa fa-plus-square"></i>Click to detail </a></li>
                                     </ul>
                                 </div>

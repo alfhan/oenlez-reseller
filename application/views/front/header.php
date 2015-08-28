@@ -1,3 +1,6 @@
+<?php
+    $prof = $this->auth->profil();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,7 @@
     <meta name="description" content="oenlez, ooh enak lezat">
     <meta name="author" content="Taufik Ute Alfan">
     <meta name="keywords" content="snack,enak,lezat,oh">
-    <title>Snack Online</title>
+    <title>.:: <?=$prof->nama?> ::.</title>
     <link href="<?=base_url('asset/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?=base_url()?>asset/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?=base_url()?>asset/css/prettyPhoto.css" rel="stylesheet">

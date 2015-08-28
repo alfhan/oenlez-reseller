@@ -14,9 +14,9 @@ class daftar_pelanggan extends CI_Controller {
 	public function index(){
 		$this->load->library('parser');
 		$index = array(
-			'title' => 'Daftar Pelanggan',
+			'title' => 'Customres',
 			'link' => $this->kelas, 
-			'data' => $this->pelanggan_model->get(),
+			'data' => $this->pelanggan_model->getWithReseller(),
 			);
 		$js = array(
 			'urlSave' => base_url($this->kelas . "/simpan"),

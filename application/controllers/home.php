@@ -243,4 +243,13 @@ class home extends CI_Controller {
 
 		echo $this->email->print_debugger();
 	}
+	public function daftar_reseller($value='')
+	{
+		$this->load->model('pelanggan_model');
+		$data = array(
+			'data' => $this->pelanggan_model->is_reseller(),
+			
+			);
+		$this->load->view('front/reseller',$data);
+	}
 }

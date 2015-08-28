@@ -46,6 +46,10 @@
             <td><input class="input-sm form-control" name="kode_pos" value="<?=$data['kode_pos']?>"></td>
         </tr>
         <tr>
+            <td>Facebook</td>
+            <td colspan="3"><input class="input-sm form-control" name="fb" value="<?=$data['fb']?>"></td>
+        </tr>
+        <tr>
             <td colspan="4">
                 <a href="javascript:void(0)" onclick="saveClick()" class="btn pull-right btn-sm btn-primary"><i class="fa fa-save"></i> Simpan</a>
             </td>

@@ -36,33 +36,6 @@
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
                                 
-                                  <!-- Wrapper for slides -->
-                                    <!-- <div class="carousel-inner">
-                                        <div class="item active">
-                                          <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                          <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                          <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-                                        </div>
-                                        <div class="item">
-                                          <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                          <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                          <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-                                        </div>
-                                        <div class="item">
-                                          <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                          <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                          <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-                                        </div>
-                                        
-                                    </div>
- -->
-                                  <!-- Controls -->
-                                  <!-- <a class="left item-control" href="#similar-product" data-slide="prev">
-                                    <i class="fa fa-angle-left"></i>
-                                  </a>
-                                  <a class="right item-control" href="#similar-product" data-slide="next">
-                                    <i class="fa fa-angle-right"></i>
-                                  </a> -->
                             </div>
 
                         </div>
@@ -73,6 +46,7 @@
                                 <p>Code: <?=$data['kode_barang']?></p>
                                 <!-- <img src="images/product-details/rating.png" alt="" /> -->
                                 <span>
+                                <?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
 									<?php 
 										if($data['is_grosir'] == 0){ 
 									?>
@@ -90,14 +64,16 @@
 									<?php } ?>
                                     <!--<label>Quantity:</label>
                                     <input type="text" value="1" name="qty" />-->
+                                    
                                     <a href="<?=site_url('product/add/'.$data['id'])?>" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Add to cart
                                    </a>
+                                   <?php } ?>
                                 </span>
                                 <p><b>Availability:</b> <?=$data['ready_stock'] == 1 ? "In Stock":"Out of Stock"?></p>
                                 <p><b>Weight:</b> <?=$data['berat']?> <small>gr</small></p>
-                                <p><b>Min Pembelian:</b> <?=$data['min_pembelian']?> Item</p>
+                                <p><b>Min Pembelian:</b> <?=$data['min_pembelian']?></p>
                                 <!-- <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
                             </div><!--/product-information-->
                         </div>
@@ -159,9 +135,13 @@
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
                                                     <img src="<?=base_url('images/recomended/'.$r['foto'])?>" alt="" />
+                                                    <?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
                                                     <h2><?=$r['harga_jual']?></h2>
+                                                    <?php } ?>
                                                     <p><?=$r['nama']?></p>
+                                                    <?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -175,9 +155,13 @@
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
                                                     <img src="<?=base_url('images/recomended/'.$r['foto'])?>" alt="" />
+                                                    <?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
                                                     <h2><?=$r['harga_jual']?></h2>
+                                                    <?php } ?>
                                                     <p><?=$r['nama']?></p>
+                                                    <?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <?php } ?>
                                                 </div>
                                                 
                                             </div>

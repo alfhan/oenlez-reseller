@@ -13,13 +13,16 @@
 				<div class="single-products">
 					<div class="productinfo text-center">
 						<img src="<?=base_url('images/kategori_feature/'.$r['foto'])?>" alt="" />
+						<?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
 						<?php if($r['is_grosir'] == 0){ ?><h2>Rp <?=$r['harga_jual']?></h2> <?php } ?>
+						<?php } ?>
 						<p><?=$r['nama']?></p>
 					</div>
 					<div class="product-overlay">
 						<div class="overlay-content">
-							<h3 style="color:#fff">Min Pembelian <br /> <?=$r['min_pembelian']?> <?=$r['is_grosir']?'Kardus':'Item'?></h3>
+							<!-- <h3 style="color:#fff">Min Pembelian <br /> <?=$r['min_pembelian']?> <?=$r['is_grosir']?'Kardus':'Item'?></h3> -->
 							<?php if($r['is_grosir'] == 0){ ?>
+							<?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
 							<h2>Rp <?=$r['harga_jual']?></h2>
 							<?php 
 								}else{
@@ -34,8 +37,11 @@
 									echo "</table>";
 								} 
 							?>
+							<?php } ?>
 							<p><?=$r['nama']?></p>
+							<?php if($this->session->userdata('tipe') == sha1(md5(MEMBER))){ ?>
 							<a href="<?=site_url('product/add/'.$r['id'])?>" class="btn btn-default btn-sm pull-left"><i class="fa fa-shopping-cart"></i> Add</a>
+							<?php } ?>
 							<a href="<?=site_url('product/detail/'.$r['id'])?>" class="btn btn-default btn-sm pull-right"><i class="fa fa-plus-square"></i> Detail</a>
 						</div>
 					</div>

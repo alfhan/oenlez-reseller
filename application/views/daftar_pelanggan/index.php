@@ -23,6 +23,7 @@
                     <th>No Pelanggan</th>
                     <th>Nama</th>
                     <th>Kabupaten/Kota</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -35,6 +36,14 @@
                     <td><?=$r['no_pelanggan']?></td>
                     <td><?=$r['nama'];?></td>
                     <td><?=$r['kab_kota'];?></td>
+                    <td>
+                    <?php
+                        if($r['jml'] > 0)
+                            echo "Reseller";
+                        else
+                            echo "Pelanggan";
+                    ?>
+                    </td>
                     <td>
                         <a href="<?=base_url('daftar_pelanggan/form/'.$r['id'])?>" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
                         <a href="javascript:void(0)" class="btn btn-xs btn-danger" onclick="deleteClick(<?=$r['id']?>)"><i class="fa fa-minus"></i> Delete</a>

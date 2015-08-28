@@ -1,6 +1,4 @@
-<?php
-	$profile = $this->auth->profil();
-?>
+<?php $profile = $this->auth->profil();?>
 <header id="header"><!--header-->
 	<div class="header_top"><!--header_top-->
 		<div class="container">
@@ -71,6 +69,7 @@
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="<?=site_url('product');?>">Products</a></li>
 									<li><a href="<?=site_url('home/my_cart');?>">Cart</a></li> 
+									<li><a href="<?=site_url('home/daftar_reseller');?>">Daftar Reseller</a></li> 
                                 </ul>
                             </li> 
 							<li><a href="<?=site_url('blog');?>">Blog</a></li> 

@@ -11,6 +11,14 @@ class pelanggan_model extends MY_Model {
 		$result = $this->db->get($this->table);
 		return $result->result_array();
 	}
+	public function getWithReseller()
+	{
+		$sql = "select p.*, count(pelanggan_id) jml
+				from pelanggan p
+				left join shop s on s.pelanggan_id = p.id
+				group by p.id order by id desc";
+		return $this->db->query($sql)->result_array();	
+	}
 	public function getById($id){
 		$result = false;
 		if($id){
@@ -33,11 +41,13 @@ class pelanggan_model extends MY_Model {
 		if(empty($_POST['password'])) unset($_POST['password']);
 		else $_POST['password'] = sha1(md5($_POST['password']));
 
-		if($foto){
+		if($tmp_name){
 			$_POST['foto'] = "$foto.jpg";
 			$this->load->helper('file');
 			$old_file = $this->input->post('old_file');
 			@unlink('images/pelanggan/'.$old_file);
+		}else{
+			unset($_POST['foto']);
 		}
 		$id = $this->input->post('id');
 		unset($_POST['old_file']);
@@ -86,5 +96,10 @@ class pelanggan_model extends MY_Model {
 			$this->db->trans_commit();
 			return true;
 		}
+	}
+	public function is_reseller()
+	{
+		$sql = "select * from pelanggan where id in (select pelanggan_id from shop) order by nama asc";
+		return $this->db->query($sql);
 	}
 }
